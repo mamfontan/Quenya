@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Quenya.Common\Quenya.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="language\language_EN.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>language_EN.resx</DependentUpon>
+    </Compile>
+    <Compile Update="language\language_ES.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>language_ES.resx</DependentUpon>
+    </Compile>
+    <Compile Update="language\language_FR.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>language_FR.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="language\language_EN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>language_EN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="language\language_ES.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>language_ES.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="language\language_FR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>language_FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

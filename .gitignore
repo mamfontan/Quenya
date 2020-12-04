@@ -1,0 +1,12 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Quenya.Common/bin/Debug/netcoreapp3.1
+/Quenya.Common/obj
+/Quenya.Domain/obj/Release/netcoreapp3.1
+/Quenya.Domain/obj
+/Quenya.Domain/bin/Debug/netcoreapp3.1
+/Quenya.View/bin/Debug/netcoreapp3.1
+/Quenya.View/obj
