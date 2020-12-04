@@ -88,7 +88,7 @@ namespace Quenya.View
 
         private void btnDatabaseSettings_Click(object sender, EventArgs e)
         {
-            var form = new FrmDatabaseSettings(_config);
+            var form = new FrmDatabaseSettings(_config, _database);
             if (form.ShowDialog() == DialogResult.OK)
             {
 

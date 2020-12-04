@@ -11,6 +11,12 @@ namespace Quenya.Common
 
         private Configuration _config = new Configuration();
 
+        public LANGUAGE Language
+        {
+            get { return _config.Language; }
+            set { _config.Language = value; }
+        }
+
         public string DbHost
         {
             get { return _config.DbHost; }
@@ -19,8 +25,8 @@ namespace Quenya.Common
 
         public string DbPort
         {
-            get { return _config.DbHost; }
-            set { _config.DbHost = value; }
+            get { return _config.DbPort; }
+            set { _config.DbPort = value; }
         }
 
         public string DbName

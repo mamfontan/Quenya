@@ -18,11 +18,12 @@ namespace Quenya.View
             InitializeComponent();
         }
 
-        public FrmDatabaseSettings(IConfigurationHelper config)
+        public FrmDatabaseSettings(IConfigurationHelper config, IDatabaseHelper database)
         {
             InitializeComponent();
 
             _config = config;
+            _database = database;
         }
 
         private void FrmDatabaseSettings_Load(object sender, EventArgs e)
@@ -63,7 +64,25 @@ namespace Quenya.View
             switch(selectedAction)
             {
                 case 0:
-                    MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    var result = _database.TestConnection();
+
+                    MessageBoxIcon icon = MessageBoxIcon.Exclamation;
+                    switch (result.MsgType)
+                    {
+                        case Domain.MSG_TYPE.INFORMATION:
+                            icon = MessageBoxIcon.Information;
+                            break;
+                        case Domain.MSG_TYPE.SUCCESS:
+                            icon = MessageBoxIcon.Information;
+                            break;
+                        case Domain.MSG_TYPE.WARNING:
+                            icon = MessageBoxIcon.Warning;
+                            break;
+                        case Domain.MSG_TYPE.ERROR:
+                            icon = MessageBoxIcon.Error;
+                            break;
+                    }
+                    MessageBox.Show(result.MsgText, result.MsgType.ToString(), MessageBoxButtons.OK, icon);
                     break;
                 case 100:
                     MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);

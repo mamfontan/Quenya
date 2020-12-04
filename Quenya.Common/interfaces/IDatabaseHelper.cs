@@ -7,6 +7,8 @@ namespace Quenya.Common.interfaces
 {
     public interface IDatabaseHelper
     {
+        StatusMessage TestConnection();
+
         List<StockValue> GetStockValueList();
     }
 }

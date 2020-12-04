@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Quenya.Common.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,8 @@ namespace Quenya.Common
 {
     public class Configuration
     {
+        public LANGUAGE Language { get; set; }
+
         public string DbHost { get; set; }
 
         public string DbPort { get; set; }

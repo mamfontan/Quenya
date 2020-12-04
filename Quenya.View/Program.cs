@@ -10,8 +10,6 @@ namespace Quenya.View
 {
     static class Program
     {
-        
-
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
@@ -19,7 +17,7 @@ namespace Quenya.View
         static void Main()
         {
             IConfigurationHelper _config = new ConfigurationHelper();
-            IDatabaseHelper _database = new DatabaseHelper();
+            IDatabaseHelper _database = new DatabaseHelper(_config.DbHost, _config.DbPort, _config.DbName, _config.DbUser, _config.DbPassword);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

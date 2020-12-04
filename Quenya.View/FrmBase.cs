@@ -1,4 +1,5 @@
 ﻿using Quenya.Common.interfaces;
+using Quenya.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,36 @@ namespace Quenya.View
             cmb.DataSource = data;
             cmb.DisplayMember = strValue;
             cmb.ValueMember = strKey;
+        }
+
+        public void ShowMessageToUser(StatusMessage msg)
+        {
+            MessageBoxIcon icon = ChooseIcon(msg.MsgType);
+
+            MessageBox.Show(msg.MsgText, msg.MsgType.ToString(), MessageBoxButtons.OK, icon);
+        }
+
+        private MessageBoxIcon ChooseIcon(MSG_TYPE iconType)
+        {
+            var result = MessageBoxIcon.Exclamation;
+
+            switch (iconType)
+            {
+                case MSG_TYPE.INFORMATION:
+                    result = MessageBoxIcon.Information;
+                    break;
+                case MSG_TYPE.SUCCESS:
+                    result = MessageBoxIcon.Information;
+                    break;
+                case MSG_TYPE.WARNING:
+                    result = MessageBoxIcon.Warning;
+                    break;
+                case MSG_TYPE.ERROR:
+                    result = MessageBoxIcon.Error;
+                    break;
+            }
+
+            return result;
         }
 
         private void BtnMouseEnter(object sender, EventArgs e)
