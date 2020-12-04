@@ -161,6 +161,7 @@
             // 
             // btnCommSettings
             // 
+            this.btnCommSettings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCommSettings.BackgroundImage")));
             this.btnCommSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCommSettings.Location = new System.Drawing.Point(7, 14);
             this.btnCommSettings.Name = "btnCommSettings";
@@ -168,10 +169,11 @@
             this.btnCommSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnCommSettings, "Configuración de las comunicaciones");
             this.btnCommSettings.UseVisualStyleBackColor = true;
-            this.btnCommSettings.Click += new System.EventHandler(this.btnAddStockValue_Click);
+            this.btnCommSettings.Click += new System.EventHandler(this.btnCommSettings_Click);
             // 
             // btnDatabaseSettings
             // 
+            this.btnDatabaseSettings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDatabaseSettings.BackgroundImage")));
             this.btnDatabaseSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDatabaseSettings.Location = new System.Drawing.Point(61, 14);
             this.btnDatabaseSettings.Name = "btnDatabaseSettings";
@@ -179,10 +181,11 @@
             this.btnDatabaseSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnDatabaseSettings, "Configuración de la base de datos");
             this.btnDatabaseSettings.UseVisualStyleBackColor = true;
-            this.btnDatabaseSettings.Click += new System.EventHandler(this.btnAddStockValue_Click);
+            this.btnDatabaseSettings.Click += new System.EventHandler(this.btnDatabaseSettings_Click);
             // 
             // btnGeneralSettings
             // 
+            this.btnGeneralSettings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGeneralSettings.BackgroundImage")));
             this.btnGeneralSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGeneralSettings.Location = new System.Drawing.Point(115, 14);
             this.btnGeneralSettings.Name = "btnGeneralSettings";
@@ -190,7 +193,7 @@
             this.btnGeneralSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnGeneralSettings, "Configuración general");
             this.btnGeneralSettings.UseVisualStyleBackColor = true;
-            this.btnGeneralSettings.Click += new System.EventHandler(this.btnAddStockValue_Click);
+            this.btnGeneralSettings.Click += new System.EventHandler(this.btnGeneralSettings_Click);
             // 
             // groupBox4
             // 
@@ -283,6 +286,7 @@
         private System.Windows.Forms.Button btnCommSettings;
         private System.Windows.Forms.Button btnDatabaseSettings;
         private System.Windows.Forms.Button btnGeneralSettings;
+        private LiveCharts.WinForms.CartesianChart chartStockValue;
     }
 }
 

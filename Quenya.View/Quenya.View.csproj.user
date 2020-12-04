@@ -4,6 +4,15 @@
     <Compile Update="FrmBase.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmCommSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmDatabaseSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmGeneralSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

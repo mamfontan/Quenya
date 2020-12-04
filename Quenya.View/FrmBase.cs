@@ -29,6 +29,13 @@ namespace Quenya.View
             }
         }
 
+        public void SetComboBox(ComboBox cmb, List<KeyValuePair<int, string>> data, string strKey, string strValue)
+        {
+            cmb.DataSource = data;
+            cmb.DisplayMember = strValue;
+            cmb.ValueMember = strKey;
+        }
+
         private void BtnMouseEnter(object sender, EventArgs e)
         {
             if (Cursor != Cursors.WaitCursor)

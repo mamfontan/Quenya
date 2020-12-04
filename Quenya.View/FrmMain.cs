@@ -52,7 +52,10 @@ namespace Quenya.View
 
         private void btnDelStockValue_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (treeStockValue.SelectedNode == null)
+                return;
+
+            var selectedStock = treeStockValue.SelectedNode;
         }
 
         private void CreateBasicObjects()
@@ -66,14 +69,39 @@ namespace Quenya.View
                 new KeyValuePair<int, string>(4, "60 minutes"),
             };
 
-            cmbTimeRange.DataSource = _timeRangeList;
-            cmbTimeRange.DisplayMember = "Value";
-            cmbTimeRange.ValueMember = "Key";
+            SetComboBox(cmbTimeRange, _timeRangeList, "Key", "Value");
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnGeneralSettings_Click(object sender, EventArgs e)
+        {
+            var form = new FrmGeneralSettings(_config);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void btnDatabaseSettings_Click(object sender, EventArgs e)
+        {
+            var form = new FrmDatabaseSettings(_config);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void btnCommSettings_Click(object sender, EventArgs e)
+        {
+            var form = new FrmCommSettings(_config);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }
