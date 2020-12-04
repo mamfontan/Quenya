@@ -57,4 +57,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+  <data name="btnDeleteStockValue.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7AAAAOwAFq1okJAAAAB3RJ
+        TUUH5AwECTIfZDrraQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACnSURBVFhH
+        7dAxCkJBEATRPYipeHcRbyaoF9DZTNiS0m9PZsHLtuejY0MP0R599NXm6FinJXrUaYkedVqiR53+vY3+
+        riSNRkkajZI0GiVpNErSaJSk0ShJo1GSRqMkjUZJGo2SNBolaTRK0miUpNEoSaNRkkajJI1GSRqNkjQa
+        JWn3QsOEa9HOhcYJp6IdyqXQgV/Mm/vyUbtyLLdCx74xb8xfDh8f4wkde7ZKPVCsggAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <data name="btnShowStockValue.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7AAAAOwAFq1okJAAAAB3RJ
+        TUUH5AwECTMmIiRSIAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEoSURBVFhH
+        7dc9SkNBFIbhdG7CVBaC7iZgr1tQ96OdJAjuITbGdYiVin+dQvJ+Qw4Mw8FM5tyAxXzwVGcyP5mTy81o
+        nTFu8bl2h0OUOcMzlkG/eMQR0uKvKAe9QTXLAfTBclzEAunkXlFmsEzgjYnQgdJX7hXlA5YTeGOi/tzA
+        Oyw724AazivIFJadXYG6XQ1XFl+wD4ua8AfluIgHpKjb1XC6c9HJ88Utp3iCN9k2dHItnn6GPcfQU6n2
+        IfONa+zBcoGWh9Q90uJecZNLWM7RsoE5mj4oNxgk3uQ18sd0KN7kNfINhHrAK9TINxDqAa9Q419dQSje
+        5DV6D/Qe6D3Qe6D3wGBX0LJzGeyFRH8QvQU20b1bQj2gd3NtonaCL1whfylt7IHRfAVy6ryErPCiHAAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnAddStockValue.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA7AAAAOwAFq1okJAAAAB3RJ
+        TUUH5AwECTEvac6IBgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAC5SURBVFhH
+        7ZdLCoNAEEQH4olNPECMns2cIeAqfo4RqwYDoZmFNKHcdMHbTKNTi7arTU5VoAfLzgNcgEwN+BiuQKYn
+        sAYGINMLWAM8kykMhIEwEAYmYA28gUsMFs52jtfxADOwl39hrfSMhXfdQA6wDpRepqAFaf05UMO7c56X
+        igrYS3mZKBUV3EFuBC4T6iasgXuL+utn6FFMwjAQBsLA6QZO/zXjMmENcLbLxBBhijJ8CBcLR7CktAF+
+        JT1DjgOYqwAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

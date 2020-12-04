@@ -30,7 +30,7 @@ namespace Quenya.View
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue });
+            HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings });
 
             CreateBasicObjects();
         }
