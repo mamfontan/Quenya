@@ -1,13 +1,14 @@
-﻿using Quenya.Common.interfaces;
+﻿using LiveCharts;
+using LiveCharts.WinForms;
+using LiveCharts.Wpf;
+using Quenya.Common.interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+using System.Windows.Media;
+using TinyMessenger;
+using CartesianChart = LiveCharts.WinForms.CartesianChart;
 
 namespace Quenya.View
 {
@@ -20,13 +21,14 @@ namespace Quenya.View
             InitializeComponent();
         }
 
-        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api)
+        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api, ITinyMessengerHub bus)
         {
             InitializeComponent();
 
             _config = config;
             _database = database;
             _api = api;
+            _bus = bus;
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -34,7 +36,9 @@ namespace Quenya.View
             HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings });
 
             CreateBasicObjects();
+
             CreateStockValuesTree();
+            CreateBasicChart();
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -84,6 +88,56 @@ namespace Quenya.View
         {
             // TODO
             var data = _database.GetStockValueList();
+        }
+
+        private void CreateBasicChart()
+        {
+            LiveCharts.WinForms.CartesianChart chart = new CartesianChart();
+
+            chart.Series = new SeriesCollection
+            {
+                new LiveCharts.Wpf.LineSeries
+                {
+                    Title = "Series 1",
+                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
+                },
+                new LineSeries
+                {
+                    Title = "Series 2",
+                    Values = new ChartValues<double> {6, 7, 3, 4, 6},
+                    PointGeometry = null
+                }
+            };
+
+            chart.AxisX.Add(new Axis
+            {
+                Title = "Month",
+                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
+            });
+
+            chart.AxisY.Add(new Axis
+            {
+                Title = "Sales",
+                LabelFormatter = value => value.ToString("C")
+            });
+
+            chart.LegendLocation = LegendLocation.Right;
+
+            //modifying the series collection will animate and update the chart
+            chart.Series.Add(new LineSeries
+            {
+                Values = new ChartValues<double> { 5, 3, 2, 4, 5 },
+                LineSmoothness = 0, //straight lines, 1 really smooth lines
+                PointGeometry = Geometry.Parse("m 25 70.36218 20 -28 -20 22 -8 -6 z"),
+                PointGeometrySize = 50,
+                PointForeground = Brushes.Gray
+            });
+
+            //modifying any series values will also animate and update the chart
+            chart.Series[2].Values.Add(5d);
+
+            splitContainer.Panel2.Controls.Add(chart);
+            chart.Dock = DockStyle.Fill;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

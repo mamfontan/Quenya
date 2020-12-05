@@ -2,11 +2,8 @@
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using TinyMessenger;
 
 namespace Quenya.View
 {
@@ -17,6 +14,8 @@ namespace Quenya.View
         internal IDatabaseHelper _database;
 
         internal IApiHelper _api;
+
+        internal ITinyMessengerHub _bus;
 
         public FrmBase()
         {
