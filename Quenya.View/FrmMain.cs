@@ -34,6 +34,7 @@ namespace Quenya.View
             HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings });
 
             CreateBasicObjects();
+            CreateStockValuesTree();
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -52,7 +53,9 @@ namespace Quenya.View
 
         private void btnInfoStockValue_Click(object sender, EventArgs e)
         {
-            // TODO
+            var form = new FrmStockDetail(_config, _database, _api);
+            form.ShowDialog();
+
         }
 
         private void btnDelStockValue_Click(object sender, EventArgs e)
@@ -75,6 +78,12 @@ namespace Quenya.View
             };
 
             SetComboBox(cmbTimeRange, _timeRangeList, "Key", "Value");
+        }
+
+        private void CreateStockValuesTree()
+        {
+            // TODO
+            var data = _database.GetStockValueList();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

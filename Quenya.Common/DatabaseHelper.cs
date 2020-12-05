@@ -3,6 +3,7 @@ using Quenya.Common.interfaces;
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Quenya.Common
 {
@@ -13,14 +14,14 @@ namespace Quenya.Common
 
         private string _cnnServer = string.Empty;
 
-        //private StockContext _stockContext;
+        private StockContext _stockContext;
 
         public DatabaseHelper(string host, string port, string schema, string user, string password)
         {
             _cnnDatabase = "Server = "+host+"; Port = "+port+"; Database = "+schema+"; Uid = "+user+"; Pwd = "+password+";";
             _cnnServer = "Server = " + host + "; Port = " + port + "; Database = " + schema + "; Uid = " + user + "; Pwd = " + password + ";";
 
-            //_stockContext = new StockContext(_cnnDatabase);
+            _stockContext = new StockContext(_cnnDatabase);
         }
 
         public StatusMessage TestConnection()
@@ -66,7 +67,20 @@ namespace Quenya.Common
 
         public List<StockValue> GetStockValueList()
         {
-            throw new NotImplementedException();
+            var result = new List<StockValue>();
+
+            try
+            {
+                result = _stockContext.Stocks.ToList();
+            }
+            catch (Exception error)
+            {
+                // TODO Log the error
+                Console.WriteLine(error.Message);
+            }
+
+            return result;
+
         }
     }
 }
