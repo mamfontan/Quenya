@@ -4,11 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using TinyMessenger;
 
 namespace Quenya.View
 {
     public partial class FrmAddStockValue : FrmBase
     {
+        public StockValue SelectedStockValue = null;
+
         public FrmAddStockValue()
         {
             InitializeComponent();
@@ -68,7 +71,12 @@ namespace Quenya.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cmbFilter.SelectedItem == null)
+                return;
+
+            SelectedStockValue = cmbFilter.SelectedItem as StockValue;
             DialogResult = DialogResult.OK;
+
             Close();
         }
     }
