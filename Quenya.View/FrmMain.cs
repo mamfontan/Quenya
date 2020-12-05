@@ -20,12 +20,13 @@ namespace Quenya.View
             InitializeComponent();
         }
 
-        public FrmMain(IConfigurationHelper config, IDatabaseHelper database)
+        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api)
         {
             InitializeComponent();
 
             _config = config;
             _database = database;
+            _api = api;
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -42,7 +43,11 @@ namespace Quenya.View
 
         private void btnAddStockValue_Click(object sender, EventArgs e)
         {
-            // TODO
+            var form = new FrmAddStockValue(_config, _database, _api);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
 
         private void btnInfoStockValue_Click(object sender, EventArgs e)

@@ -18,11 +18,12 @@ namespace Quenya.View
         {
             IConfigurationHelper _config = new ConfigurationHelper();
             IDatabaseHelper _database = new DatabaseHelper(_config.DbHost, _config.DbPort, _config.DbName, _config.DbUser, _config.DbPassword);
+            IApiHelper _api = new ApiHelper();
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain(_config, _database));
+            Application.Run(new FrmMain(_config, _database, _api));
         }
     }
 }

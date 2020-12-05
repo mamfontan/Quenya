@@ -64,25 +64,8 @@ namespace Quenya.View
             switch(selectedAction)
             {
                 case 0:
-                    var result = _database.TestConnection();
-
-                    MessageBoxIcon icon = MessageBoxIcon.Exclamation;
-                    switch (result.MsgType)
-                    {
-                        case Domain.MSG_TYPE.INFORMATION:
-                            icon = MessageBoxIcon.Information;
-                            break;
-                        case Domain.MSG_TYPE.SUCCESS:
-                            icon = MessageBoxIcon.Information;
-                            break;
-                        case Domain.MSG_TYPE.WARNING:
-                            icon = MessageBoxIcon.Warning;
-                            break;
-                        case Domain.MSG_TYPE.ERROR:
-                            icon = MessageBoxIcon.Error;
-                            break;
-                    }
-                    MessageBox.Show(result.MsgText, result.MsgType.ToString(), MessageBoxButtons.OK, icon);
+                    var result = _database.TestConnection(txtDbHost.Text.Trim(), npDbPort.Value.ToString(), txtDbName.Text.Trim(), txtDbUser.Text.Trim(), txtDbPassword.Text.Trim());
+                    ShowMessageToUser(result);
                     break;
                 case 100:
                     MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -92,6 +75,7 @@ namespace Quenya.View
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
@@ -138,6 +122,7 @@ namespace Quenya.View
             if (needToSave)
                 _config.Save();
 
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

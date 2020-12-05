@@ -16,6 +16,8 @@ namespace Quenya.View
 
         internal IDatabaseHelper _database;
 
+        internal IApiHelper _api;
+
         public FrmBase()
         {
             InitializeComponent();

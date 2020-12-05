@@ -9,6 +9,8 @@ namespace Quenya.Common.interfaces
     {
         StatusMessage TestConnection();
 
+        StatusMessage TestConnection(string dbHost, string dbPort, string dbName, string dbUser, string dbPass);
+
         List<StockValue> GetStockValueList();
     }
 }

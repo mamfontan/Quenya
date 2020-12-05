@@ -55,6 +55,7 @@ namespace Quenya.View
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
@@ -68,6 +69,7 @@ namespace Quenya.View
                 _config.Save();
             }
 
+            DialogResult = DialogResult.OK;
             Close();
         }
     }
