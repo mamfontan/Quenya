@@ -1,13 +1,9 @@
-﻿using Quenya.Common.interfaces;
+﻿using LiveCharts.WinForms;
+using Quenya.Common.interfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TinyMessenger;
 
 namespace Quenya.View
 {
@@ -20,13 +16,14 @@ namespace Quenya.View
             InitializeComponent();
         }
 
-        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api)
+        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api, ITinyMessengerHub bus)
         {
             InitializeComponent();
 
             _config = config;
             _database = database;
             _api = api;
+            _bus = bus;
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -34,7 +31,9 @@ namespace Quenya.View
             HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings });
 
             CreateBasicObjects();
+
             CreateStockValuesTree();
+            CreateBasicChart();
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -84,6 +83,13 @@ namespace Quenya.View
         {
             // TODO
             var data = _database.GetStockValueList();
+        }
+
+        private void CreateBasicChart()
+        {
+            CartesianChart chart = new CartesianChart();
+            splitContainer.Panel2.Controls.Add(chart);
+            chart.Dock = DockStyle.Fill;
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

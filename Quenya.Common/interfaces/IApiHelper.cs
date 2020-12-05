@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Quenya.Domain;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Quenya.Common.interfaces
 {
     public interface IApiHelper
     {
-        List<string> SearchStockValues(string strFilter);
+        List<StockValue> SearchStockValues(string strFilter);
     }
 }

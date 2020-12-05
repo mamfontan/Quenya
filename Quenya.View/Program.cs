@@ -1,10 +1,8 @@
 using Quenya.Common;
 using Quenya.Common.interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TinyMessenger;
 
 namespace Quenya.View
 {
@@ -16,14 +14,15 @@ namespace Quenya.View
         [STAThread]
         static void Main()
         {
+            ITinyMessengerHub _bus = new TinyMessengerHub();
             IConfigurationHelper _config = new ConfigurationHelper();
             IDatabaseHelper _database = new DatabaseHelper(_config.DbHost, _config.DbPort, _config.DbName, _config.DbUser, _config.DbPassword);
-            IApiHelper _api = new ApiHelper();
+            IApiHelper _api = new ApiHelper(_bus);
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain(_config, _database, _api));
+            Application.Run(new FrmMain(_config, _database, _api, _bus));
         }
     }
 }
