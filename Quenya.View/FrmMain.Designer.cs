@@ -42,6 +42,7 @@
             this.btnDatabaseSettings = new System.Windows.Forms.Button();
             this.btnGeneralSettings = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblUsage = new System.Windows.Forms.Label();
             this.cmbTimeRange = new System.Windows.Forms.ComboBox();
             this.btnShowStockValue = new System.Windows.Forms.Button();
             this.btnAddStockValue = new System.Windows.Forms.Button();
@@ -205,12 +206,23 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.lblUsage);
             this.groupBox4.Controls.Add(this.cmbTimeRange);
             this.groupBox4.Location = new System.Drawing.Point(316, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(741, 66);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
+            // 
+            // lblUsage
+            // 
+            this.lblUsage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblUsage.Location = new System.Drawing.Point(675, 20);
+            this.lblUsage.Name = "lblUsage";
+            this.lblUsage.Size = new System.Drawing.Size(57, 37);
+            this.lblUsage.TabIndex = 1;
+            this.lblUsage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmbTimeRange
             // 
@@ -296,6 +308,7 @@
         private System.Windows.Forms.Button btnGeneralSettings;
         private LiveCharts.WinForms.CartesianChart chartStockValue;
         private System.Windows.Forms.ToolTip toolTip_EN;
+        private System.Windows.Forms.Label lblUsage;
     }
 }
 

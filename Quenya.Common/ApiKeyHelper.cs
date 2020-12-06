@@ -50,6 +50,11 @@ namespace Quenya.Common
             return result;
         }
 
+        public int CountRecentKeys()
+        {
+            DateTime lastMinute = DateTime.Now.AddMinutes(-1);
+            return _keys.Count(x => x.LastUse >= lastMinute);
+        }
 
         private void LoadKeyConfiguration()
         {

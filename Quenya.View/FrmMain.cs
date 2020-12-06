@@ -2,6 +2,7 @@
 using LiveCharts.WinForms;
 using LiveCharts.Wpf;
 using Quenya.Common.interfaces;
+using Quenya.Common.messages;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,6 +16,11 @@ namespace Quenya.View
     public partial class FrmMain : FrmBase
     {
         private List<KeyValuePair<int, string>> _timeRangeList;
+
+        #region Tokens de subrcripcion a eventos
+        private TinyMessageSubscriptionToken _tokenMsgUpdateApiUse;
+        #endregion
+
 
         public FrmMain()
         {
@@ -50,12 +56,25 @@ namespace Quenya.View
 
         private void SubscribeToEvents()
         {
-            
+            if (_bus == null)
+                return;
+
+            _tokenMsgUpdateApiUse = _bus.Subscribe<MsgUpdateApiUse>((m) => {
+
+                BeginInvoke((Action)(() => {
+                    var apiUseLevel = m.Content;
+                    lblUsage.Text = apiUseLevel + " / 5";
+                }));
+            });
         }
 
         private void UnSubscribeToEvents()
         {
+            if (_bus == null)
+                return;
 
+            if (_tokenMsgUpdateApiUse != null)
+                _bus.Unsubscribe<MsgUpdateApiUse>(_tokenMsgUpdateApiUse);
         }
 
         private void btnAddStockValue_Click(object sender, EventArgs e)
@@ -87,6 +106,7 @@ namespace Quenya.View
                 return;
 
             var selectedStock = treeStockValue.SelectedNode;
+            //var result = _database.DeleteStockValue(selectedStock);
         }
 
         private void CreateBasicObjects()
@@ -113,11 +133,14 @@ namespace Quenya.View
             foreach(var item in data)
             {
                 TreeNode newNode = new TreeNode(item.FullName);
+                newNode.Tag = item.Code;
+                newNode.ToolTipText = item.Name + Environment.NewLine + "Country: " + item.Country + Environment.NewLine + "Currency: " + item.Currency;
 
                 rootNode.Nodes.Add(newNode);
             }
 
             treeStockValue.Nodes.Add(rootNode);
+            treeStockValue.ShowNodeToolTips = true;
             treeStockValue.ExpandAll();
         }
 

@@ -9,6 +9,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
+using System.Timers;
+//using System.Threading;
+//using System.Timers;
 using TinyMessenger;
 
 namespace Quenya.Common
@@ -35,9 +38,34 @@ namespace Quenya.Common
 
         private ApiKeyHelper _keyHelper = new ApiKeyHelper();
 
+        private Timer _timer;
+
         public ApiHelper(ITinyMessengerHub bus)
         {
             _bus = bus;
+
+            _timer = new Timer
+            {
+                Interval = 3000
+            };
+
+            _timer.Elapsed += SendApiUseLevelMessage;
+            _timer.Start();
+        }
+
+        ~ApiHelper()
+        {
+            if (_timer != null)
+                _timer.Stop();
+        }
+
+        private void SendApiUseLevelMessage(Object myObject, EventArgs myEventArgs)
+        {
+            if (_bus != null)
+            {
+                int counter = _keyHelper.CountRecentKeys();
+                _bus.Publish(new MsgUpdateApiUse(this, counter));
+            }
         }
 
         public List<StockValue> SearchStockValues(string strFilter)

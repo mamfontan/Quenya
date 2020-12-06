@@ -151,6 +151,52 @@ namespace Quenya.Common
             return result;
         }
 
+        public StatusMessage DeleteStockValue(StockValue data)
+        {
+            StatusMessage result = new StatusMessage();
+
+            if (_stockContext != null)
+            {
+                try
+                {
+                    var savedStock = _stockContext.Stocks.FirstOrDefault(x => x.Code.Equals(data.Code, StringComparison.InvariantCultureIgnoreCase));
+                    var savedOverview = _stockContext.Overviews.FirstOrDefault(x => x.Code.Equals(data.Code, StringComparison.InvariantCultureIgnoreCase));
+                    //var savedPrices01 = _stockContext.OneMinuteValues.Where(x => x.Code == data.Code);
+                    //var savedPrices05 = _stockContext.FiveMinuteValues.Where(x => x.Code == data.Code);
+                    //var savedPrices15 = _stockContext.FifteenMinuteValues.Where(x => x.Code == data.Code);
+                    //var savedPrices60 = _stockContext.SixtyMinuteValues.Where(x => x.Code == data.Code);
+
+                    if (savedStock != null)
+                        _stockContext.Stocks.Remove(savedStock);
+
+                    if (savedOverview != null)
+                        _stockContext.Overviews.Remove(savedOverview);
+
+                    //if (savedPrices01 != null)
+                    //    _stockContext.OneMinuteValues.RemoveRange(savedPrices01);
+
+                    //if (savedPrices05 != null)
+                    //    _stockContext.FiveMinuteValues.RemoveRange(savedPrices05);
+
+                    //if (savedPrices15 != null)
+                    //    _stockContext.FifteenMinuteValues.RemoveRange(savedPrices15);
+
+                    //if (savedPrices60 != null)
+                    //    _stockContext.SixtyMinuteValues.RemoveRange(savedPrices60);
+
+                    _stockContext.SaveChanges();
+
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos eliminados correctamente");
+                }
+                catch (Exception error)
+                {
+                    result = GetErrorMessage(error);
+                }
+            }
+
+            return result;
+        }
+
         private StatusMessage GetErrorMessage(Exception error)
         {
             if (error.InnerException == null)

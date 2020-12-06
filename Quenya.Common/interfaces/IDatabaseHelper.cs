@@ -18,5 +18,7 @@ namespace Quenya.Common.interfaces
         StatusMessage InsertStockValue(StockValue data);
 
         StatusMessage InsertStockOverview(Overview data);
+
+        StatusMessage DeleteStockValue(StockValue data);
     }
 }
