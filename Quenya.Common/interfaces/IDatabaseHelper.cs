@@ -11,6 +11,8 @@ namespace Quenya.Common.interfaces
 
         StatusMessage CheckCompatibility();
 
+        StatusMessage CheckCompatibility(string dbHost, string dbPort, string dbName, string dbUser, string dbPass);
+
         List<StockValue> GetStockValueList();
 
         StatusMessage InsertStockValue(StockValue data);

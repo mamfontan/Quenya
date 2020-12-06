@@ -40,6 +40,8 @@ namespace Quenya.View
 
         public void ShowMessageToUser(StatusMessage msg)
         {
+            Cursor = Cursors.Default;
+
             MessageBoxIcon icon = ChooseIcon(msg.MsgType);
 
             MessageBox.Show(msg.MsgText, msg.MsgType.ToString(), MessageBoxButtons.OK, icon);

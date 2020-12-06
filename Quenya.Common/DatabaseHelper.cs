@@ -73,6 +73,17 @@ namespace Quenya.Common
             return new StatusMessage(MSG_TYPE.ERROR, "Versión de la base de datos incorrecta");
         }
 
+        public StatusMessage CheckCompatibility(string host, string port, string schema, string user, string password)
+        {
+            var strCnn = "Server = " + host + "; Port = " + port + "; Database = " + schema + "; Uid = " + user + "; Pwd = " + password + ";";
+            var newContext = new StockContext(strCnn);
+
+            if (newContext.Database.CompatibleWithModel(false))
+                return new StatusMessage(MSG_TYPE.SUCCESS, "La versión de la base de datos es correcta");
+
+            return new StatusMessage(MSG_TYPE.ERROR, "Versión de la base de datos incorrecta");
+        }
+
         public List<StockValue> GetStockValueList()
         {
             var result = new List<StockValue>();

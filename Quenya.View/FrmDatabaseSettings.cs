@@ -1,4 +1,5 @@
 ﻿using Quenya.Common.interfaces;
+using Quenya.Domain;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -35,6 +36,7 @@ namespace Quenya.View
             _actionList = new List<KeyValuePair<int, string>>()
             {
                 new KeyValuePair<int, string>(0, "Check connection"),
+                new KeyValuePair<int, string>(1, "Check database"),
                 new KeyValuePair<int, string>(100, "Destroy the computer"),
             };
 
@@ -55,12 +57,20 @@ namespace Quenya.View
 
         private void btnActionGo_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
+            
             var selectedAction = (int)cmbActionList.SelectedValue;
+
+            StatusMessage result = null;
 
             switch(selectedAction)
             {
-                case 0:
-                    var result = _database.TestConnection(txtDbHost.Text.Trim(), npDbPort.Value.ToString(), txtDbName.Text.Trim(), txtDbUser.Text.Trim(), txtDbPassword.Text.Trim());
+                case 0: // Check connection
+                    result = _database.TestConnection(txtDbHost.Text.Trim(), npDbPort.Value.ToString(), txtDbName.Text.Trim(), txtDbUser.Text.Trim(), txtDbPassword.Text.Trim());
+                    ShowMessageToUser(result);
+                    break;
+                case 1: // Chack database
+                    result = _database.CheckCompatibility(txtDbHost.Text.Trim(), npDbPort.Value.ToString(), txtDbName.Text.Trim(), txtDbUser.Text.Trim(), txtDbPassword.Text.Trim());
                     ShowMessageToUser(result);
                     break;
                 case 100:
