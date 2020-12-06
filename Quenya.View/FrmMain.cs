@@ -39,9 +39,21 @@ namespace Quenya.View
 
             CreateStockValuesTree();
             CreateBasicChart();
+
+            SubscribeToEvents();
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            UnSubscribeToEvents();
+        }
+
+        private void SubscribeToEvents()
+        {
+            
+        }
+
+        private void UnSubscribeToEvents()
         {
 
         }
@@ -51,7 +63,14 @@ namespace Quenya.View
             var form = new FrmAddStockValue(_config, _database, _api);
             if (form.ShowDialog() == DialogResult.OK)
             {
+                var newStockValue = form.SelectedStockValue;
+                var result = _database.InsertStockValue(newStockValue);
+                ShowMessageToUser(result);
 
+                if (result.MsgType == Domain.MSG_TYPE.SUCCESS)
+                {
+                    CreateStockValuesTree();
+                }
             }
         }
 
@@ -86,13 +105,24 @@ namespace Quenya.View
 
         private void CreateStockValuesTree()
         {
-            // TODO
+            treeStockValue.Nodes.Clear();
+
+            TreeNode rootNode = new TreeNode("Stock values");
+
             var data = _database.GetStockValueList();
+            foreach(var item in data)
+            {
+                TreeNode newNode = new TreeNode(item.FullName);
+
+                rootNode.Nodes.Add(newNode);
+            }
+
+            treeStockValue.Nodes.Add(rootNode);
         }
 
         private void CreateBasicChart()
         {
-            LiveCharts.WinForms.CartesianChart chart = new CartesianChart();
+            CartesianChart chart = new CartesianChart();
 
             chart.Series = new SeriesCollection
             {

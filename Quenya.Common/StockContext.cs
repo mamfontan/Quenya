@@ -1,9 +1,10 @@
-﻿using Quenya.Domain;
+﻿using MySql.Data.EntityFramework;
+using Quenya.Domain;
 using System.Data.Entity;
 
 namespace Quenya.Common
 {
-    //[DbConfigurationType(typeof(MySqlEFConfiguration))]
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class StockContext : DbContext
     {
         public StockContext(string cnn) : base(cnn)

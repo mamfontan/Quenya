@@ -1,7 +1,5 @@
 ﻿using Quenya.Domain;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Quenya.Common.interfaces
 {
@@ -11,6 +9,14 @@ namespace Quenya.Common.interfaces
 
         StatusMessage TestConnection(string dbHost, string dbPort, string dbName, string dbUser, string dbPass);
 
+        StatusMessage CheckCompatibility();
+
+        StatusMessage CheckCompatibility(string dbHost, string dbPort, string dbName, string dbUser, string dbPass);
+
         List<StockValue> GetStockValueList();
+
+        StatusMessage InsertStockValue(StockValue data);
+
+        StatusMessage InsertStockOverview(Overview data);
     }
 }
