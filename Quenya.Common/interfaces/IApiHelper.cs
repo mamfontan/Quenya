@@ -6,5 +6,7 @@ namespace Quenya.Common.interfaces
     public interface IApiHelper
     {
         List<StockValue> SearchStockValues(string strFilter);
+
+        Overview SearchStockOverview(string stockCode);
     }
 }

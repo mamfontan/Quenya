@@ -33,6 +33,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnDeleteStockValue = new System.Windows.Forms.Button();
             this.treeStockValue = new System.Windows.Forms.TreeView();
+            this.treeContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuUpdate01M = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUpdate05M = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUpdate15M = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUpdate60M = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuUpdateDaily = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.dgStockValueData = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -49,6 +56,7 @@
             this.toolTip_ES = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_EN = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
+            this.treeContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -66,7 +74,7 @@
             this.groupBox1.Controls.Add(this.treeStockValue);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(298, 543);
+            this.groupBox1.Size = new System.Drawing.Size(333, 543);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Stock value list  ";
@@ -75,7 +83,7 @@
             // 
             this.btnDeleteStockValue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteStockValue.BackgroundImage")));
             this.btnDeleteStockValue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDeleteStockValue.Location = new System.Drawing.Point(259, 1);
+            this.btnDeleteStockValue.Location = new System.Drawing.Point(296, 1);
             this.btnDeleteStockValue.Name = "btnDeleteStockValue";
             this.btnDeleteStockValue.Size = new System.Drawing.Size(24, 24);
             this.btnDeleteStockValue.TabIndex = 1;
@@ -89,11 +97,61 @@
             this.treeStockValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeStockValue.ContextMenuStrip = this.treeContextMenu;
             this.treeStockValue.HideSelection = false;
             this.treeStockValue.Location = new System.Drawing.Point(16, 33);
             this.treeStockValue.Name = "treeStockValue";
-            this.treeStockValue.Size = new System.Drawing.Size(264, 501);
+            this.treeStockValue.ShowNodeToolTips = true;
+            this.treeStockValue.Size = new System.Drawing.Size(299, 501);
             this.treeStockValue.TabIndex = 0;
+            // 
+            // treeContextMenu
+            // 
+            this.treeContextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.treeContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuUpdate01M,
+            this.menuUpdate05M,
+            this.menuUpdate15M,
+            this.menuUpdate60M,
+            this.toolStripSeparator1,
+            this.menuUpdateDaily});
+            this.treeContextMenu.Name = "treeContextMenu";
+            this.treeContextMenu.Size = new System.Drawing.Size(267, 130);
+            // 
+            // menuUpdate01M
+            // 
+            this.menuUpdate01M.Name = "menuUpdate01M";
+            this.menuUpdate01M.Size = new System.Drawing.Size(266, 24);
+            this.menuUpdate01M.Text = "Update one minute range";
+            // 
+            // menuUpdate05M
+            // 
+            this.menuUpdate05M.Name = "menuUpdate05M";
+            this.menuUpdate05M.Size = new System.Drawing.Size(266, 24);
+            this.menuUpdate05M.Text = "Update five minute range";
+            // 
+            // menuUpdate15M
+            // 
+            this.menuUpdate15M.Name = "menuUpdate15M";
+            this.menuUpdate15M.Size = new System.Drawing.Size(266, 24);
+            this.menuUpdate15M.Text = "Update fifteen minute range";
+            // 
+            // menuUpdate60M
+            // 
+            this.menuUpdate60M.Name = "menuUpdate60M";
+            this.menuUpdate60M.Size = new System.Drawing.Size(266, 24);
+            this.menuUpdate60M.Text = "Update one hour range";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(263, 6);
+            // 
+            // menuUpdateDaily
+            // 
+            this.menuUpdateDaily.Name = "menuUpdateDaily";
+            this.menuUpdateDaily.Size = new System.Drawing.Size(266, 24);
+            this.menuUpdateDaily.Text = "Update daily values";
             // 
             // splitContainer
             // 
@@ -101,14 +159,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer.Location = new System.Drawing.Point(322, 86);
+            this.splitContainer.Location = new System.Drawing.Point(351, 86);
             this.splitContainer.Name = "splitContainer";
             this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.Controls.Add(this.dgStockValueData);
-            this.splitContainer.Size = new System.Drawing.Size(739, 412);
+            this.splitContainer.Size = new System.Drawing.Size(710, 412);
             this.splitContainer.SplitterDistance = 246;
             this.splitContainer.TabIndex = 2;
             this.splitContainer.Text = "splitContainer1";
@@ -122,7 +180,7 @@
             this.dgStockValueData.Location = new System.Drawing.Point(3, 3);
             this.dgStockValueData.Name = "dgStockValueData";
             this.dgStockValueData.RowHeadersWidth = 51;
-            this.dgStockValueData.Size = new System.Drawing.Size(730, 236);
+            this.dgStockValueData.Size = new System.Drawing.Size(701, 236);
             this.dgStockValueData.TabIndex = 0;
             this.dgStockValueData.Text = "dataGridView1";
             // 
@@ -131,9 +189,9 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtInfo);
-            this.groupBox2.Location = new System.Drawing.Point(316, 489);
+            this.groupBox2.Location = new System.Drawing.Point(351, 489);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(564, 66);
+            this.groupBox2.Size = new System.Drawing.Size(529, 66);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             // 
@@ -145,10 +203,9 @@
             this.txtInfo.Location = new System.Drawing.Point(6, 15);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
-            this.txtInfo.Size = new System.Drawing.Size(550, 46);
+            this.txtInfo.Size = new System.Drawing.Size(515, 46);
             this.txtInfo.TabIndex = 0;
             this.txtInfo.Text = "";
-            this.txtInfo.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // groupBox3
             // 
@@ -208,9 +265,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.lblUsage);
             this.groupBox4.Controls.Add(this.cmbTimeRange);
-            this.groupBox4.Location = new System.Drawing.Point(316, 12);
+            this.groupBox4.Location = new System.Drawing.Point(351, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(741, 66);
+            this.groupBox4.Size = new System.Drawing.Size(706, 66);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
@@ -218,7 +275,7 @@
             // 
             this.lblUsage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblUsage.Location = new System.Drawing.Point(675, 20);
+            this.lblUsage.Location = new System.Drawing.Point(640, 20);
             this.lblUsage.Name = "lblUsage";
             this.lblUsage.Size = new System.Drawing.Size(57, 37);
             this.lblUsage.TabIndex = 1;
@@ -237,7 +294,7 @@
             // 
             this.btnShowStockValue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowStockValue.BackgroundImage")));
             this.btnShowStockValue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnShowStockValue.Location = new System.Drawing.Point(242, 13);
+            this.btnShowStockValue.Location = new System.Drawing.Point(279, 13);
             this.btnShowStockValue.Name = "btnShowStockValue";
             this.btnShowStockValue.Size = new System.Drawing.Size(24, 24);
             this.btnShowStockValue.TabIndex = 1;
@@ -250,7 +307,7 @@
             // 
             this.btnAddStockValue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddStockValue.BackgroundImage")));
             this.btnAddStockValue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddStockValue.Location = new System.Drawing.Point(215, 13);
+            this.btnAddStockValue.Location = new System.Drawing.Point(251, 13);
             this.btnAddStockValue.Name = "btnAddStockValue";
             this.btnAddStockValue.Size = new System.Drawing.Size(24, 24);
             this.btnAddStockValue.TabIndex = 1;
@@ -277,6 +334,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.groupBox1.ResumeLayout(false);
+            this.treeContextMenu.ResumeLayout(false);
             this.splitContainer.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
@@ -309,6 +367,15 @@
         private LiveCharts.WinForms.CartesianChart chartStockValue;
         private System.Windows.Forms.ToolTip toolTip_EN;
         private System.Windows.Forms.Label lblUsage;
+        private System.Windows.Forms.ContextMenuStrip treeContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem menuUpdate01M;
+        private System.Windows.Forms.ToolStripMenuItem menuUpdate05M;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem menuUpdateDaily;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem menuUpdate15M;
+        private System.Windows.Forms.ToolStripMenuItem menuUpdate60M;
     }
 }
 

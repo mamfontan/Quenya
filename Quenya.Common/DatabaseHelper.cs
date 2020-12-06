@@ -18,7 +18,7 @@ namespace Quenya.Common
 
         public DatabaseHelper(string host, string port, string schema, string user, string password)
         {
-            _cnnDatabase = "Server = "+host+"; Port = "+port+"; Database = "+schema+"; Uid = "+user+"; Pwd = "+password+";";
+            _cnnDatabase = "Server = " + host + "; Port = " + port + "; Database = " + schema + "; Uid = " + user + "; Pwd = " + password + ";";
             _cnnServer = "Server = " + host + "; Port = " + port + "; Database = " + schema + "; Uid = " + user + "; Pwd = " + password + ";";
 
             _stockContext = new StockContext(_cnnDatabase);
@@ -101,6 +101,40 @@ namespace Quenya.Common
             return result;
         }
 
+        public StockValue GetStockValueByCode(string stockCode)
+        {
+            StockValue result = null;
+
+            try
+            {
+                result = _stockContext.Stocks.FirstOrDefault(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+            }
+            catch (Exception error)
+            {
+                // TODO Log the error
+                Console.WriteLine(error.Message);
+            }
+
+            return result;
+        }
+
+        public Overview GetStockOverviewByCode(string stockCode)
+        {
+            Overview result = null;
+
+            try
+            {
+                result = _stockContext.Overviews.FirstOrDefault(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+            }
+            catch (Exception error)
+            {
+                // TODO Log the error
+                Console.WriteLine(error.Message);
+            }
+
+            return result;
+        }
+
         public StatusMessage InsertStockValue(StockValue data)
         {
             StatusMessage result = new StatusMessage();
@@ -151,7 +185,7 @@ namespace Quenya.Common
             return result;
         }
 
-        public StatusMessage DeleteStockValue(StockValue data)
+        public StatusMessage DeleteStockValue(string stockCode)
         {
             StatusMessage result = new StatusMessage();
 
@@ -159,12 +193,13 @@ namespace Quenya.Common
             {
                 try
                 {
-                    var savedStock = _stockContext.Stocks.FirstOrDefault(x => x.Code.Equals(data.Code, StringComparison.InvariantCultureIgnoreCase));
-                    var savedOverview = _stockContext.Overviews.FirstOrDefault(x => x.Code.Equals(data.Code, StringComparison.InvariantCultureIgnoreCase));
-                    //var savedPrices01 = _stockContext.OneMinuteValues.Where(x => x.Code == data.Code);
-                    //var savedPrices05 = _stockContext.FiveMinuteValues.Where(x => x.Code == data.Code);
-                    //var savedPrices15 = _stockContext.FifteenMinuteValues.Where(x => x.Code == data.Code);
-                    //var savedPrices60 = _stockContext.SixtyMinuteValues.Where(x => x.Code == data.Code);
+                    var savedStock = _stockContext.Stocks.FirstOrDefault(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+                    var savedOverview = _stockContext.Overviews.FirstOrDefault(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+                    var savedPrices01 = _stockContext.OneMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+                    var savedPrices05 = _stockContext.FiveMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+                    var savedPrices15 = _stockContext.FifteenMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+                    var savedPrices60 = _stockContext.SixtyMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
+                    var savedDailys = _stockContext.Dailys.ToList();
 
                     if (savedStock != null)
                         _stockContext.Stocks.Remove(savedStock);
@@ -172,17 +207,20 @@ namespace Quenya.Common
                     if (savedOverview != null)
                         _stockContext.Overviews.Remove(savedOverview);
 
-                    //if (savedPrices01 != null)
-                    //    _stockContext.OneMinuteValues.RemoveRange(savedPrices01);
+                    if (savedDailys != null)
+                        _stockContext.Dailys.RemoveRange(savedDailys);
 
-                    //if (savedPrices05 != null)
-                    //    _stockContext.FiveMinuteValues.RemoveRange(savedPrices05);
+                    if (savedPrices01 != null)
+                        _stockContext.OneMinuteValues.RemoveRange(savedPrices01);
 
-                    //if (savedPrices15 != null)
-                    //    _stockContext.FifteenMinuteValues.RemoveRange(savedPrices15);
+                    if (savedPrices05 != null)
+                        _stockContext.FiveMinuteValues.RemoveRange(savedPrices05);
 
-                    //if (savedPrices60 != null)
-                    //    _stockContext.SixtyMinuteValues.RemoveRange(savedPrices60);
+                    if (savedPrices15 != null)
+                        _stockContext.FifteenMinuteValues.RemoveRange(savedPrices15);
+
+                    if (savedPrices60 != null)
+                        _stockContext.SixtyMinuteValues.RemoveRange(savedPrices60);
 
                     _stockContext.SaveChanges();
 

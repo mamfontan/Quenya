@@ -15,10 +15,16 @@ namespace Quenya.Common.interfaces
 
         List<StockValue> GetStockValueList();
 
+        StockValue GetStockValueByCode(string stockCode);
+
+        Overview GetStockOverviewByCode(string stockCode);
+
         StatusMessage InsertStockValue(StockValue data);
 
         StatusMessage InsertStockOverview(Overview data);
 
-        StatusMessage DeleteStockValue(StockValue data);
+        StatusMessage DeleteStockValue(string stockCode);
+
+        
     }
 }

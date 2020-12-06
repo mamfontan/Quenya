@@ -84,10 +84,13 @@ namespace Quenya.View
             {
                 var newStockValue = form.SelectedStockValue;
                 var result = _database.InsertStockValue(newStockValue);
-                ShowMessageToUser(result);
 
                 if (result.MsgType == Domain.MSG_TYPE.SUCCESS)
                 {
+                    var overview = _api.SearchStockOverview(newStockValue.Code);
+                    if (overview != null)
+                        _database.InsertStockOverview(overview);
+
                     CreateStockValuesTree();
                 }
             }
@@ -95,18 +98,25 @@ namespace Quenya.View
 
         private void btnInfoStockValue_Click(object sender, EventArgs e)
         {
-            var form = new FrmStockDetail(_config, _database, _api);
-            form.ShowDialog();
+            if (treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
 
+            var selectedStockCode = treeStockValue.SelectedNode.Tag.ToString();
+            var form = new FrmStockDetail(selectedStockCode, _config, _database, _api);
+            form.ShowDialog();
         }
 
         private void btnDelStockValue_Click(object sender, EventArgs e)
         {
-            if (treeStockValue.SelectedNode == null)
+            if (treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
                 return;
 
-            var selectedStock = treeStockValue.SelectedNode;
-            //var result = _database.DeleteStockValue(selectedStock);
+            var selectedStockCode = treeStockValue.SelectedNode.Tag.ToString();
+            var result = _database.DeleteStockValue(selectedStockCode);
+            if (result.MsgType == Domain.MSG_TYPE.SUCCESS)
+                CreateStockValuesTree();
+            else
+                ShowMessageToUser(result);
         }
 
         private void CreateBasicObjects()
@@ -140,7 +150,6 @@ namespace Quenya.View
             }
 
             treeStockValue.Nodes.Add(rootNode);
-            treeStockValue.ShowNodeToolTips = true;
             treeStockValue.ExpandAll();
         }
 
@@ -181,11 +190,6 @@ namespace Quenya.View
             chart.Dock = DockStyle.Fill;
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnGeneralSettings_Click(object sender, EventArgs e)
         {
             var form = new FrmGeneralSettings(_config);
@@ -212,5 +216,32 @@ namespace Quenya.View
 
             }
         }
+
+        #region Menu Events
+        private void menuUpdate01M_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        private void menuUpdate05M_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        private void menuUpdate15M_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        private void menuUpdate60M_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+        private void menuUpdateDaily_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+        #endregion
     }
 }
