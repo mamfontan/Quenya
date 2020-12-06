@@ -118,6 +118,7 @@ namespace Quenya.View
             }
 
             treeStockValue.Nodes.Add(rootNode);
+            treeStockValue.ExpandAll();
         }
 
         private void CreateBasicChart()
@@ -126,7 +127,7 @@ namespace Quenya.View
 
             chart.Series = new SeriesCollection
             {
-                new LiveCharts.Wpf.LineSeries
+                new LineSeries
                 {
                     Title = "Series 1",
                     Values = new ChartValues<double> {4, 6, 5, 2, 7}
@@ -152,19 +153,6 @@ namespace Quenya.View
             });
 
             chart.LegendLocation = LegendLocation.Right;
-
-            //modifying the series collection will animate and update the chart
-            chart.Series.Add(new LineSeries
-            {
-                Values = new ChartValues<double> { 5, 3, 2, 4, 5 },
-                LineSmoothness = 0, //straight lines, 1 really smooth lines
-                PointGeometry = Geometry.Parse("m 25 70.36218 20 -28 -20 22 -8 -6 z"),
-                PointGeometrySize = 50,
-                PointForeground = Brushes.Gray
-            });
-
-            //modifying any series values will also animate and update the chart
-            chart.Series[2].Values.Add(5d);
 
             splitContainer.Panel2.Controls.Add(chart);
             chart.Dock = DockStyle.Fill;

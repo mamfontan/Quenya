@@ -46,6 +46,7 @@
             this.btnShowStockValue = new System.Windows.Forms.Button();
             this.btnAddStockValue = new System.Windows.Forms.Button();
             this.toolTip_ES = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_EN = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -78,6 +79,7 @@
             this.btnDeleteStockValue.Size = new System.Drawing.Size(24, 24);
             this.btnDeleteStockValue.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnDeleteStockValue, "Eliminar valor");
+            this.toolTip_EN.SetToolTip(this.btnDeleteStockValue, "Delete stock");
             this.btnDeleteStockValue.UseVisualStyleBackColor = true;
             this.btnDeleteStockValue.Click += new System.EventHandler(this.btnDelStockValue_Click);
             // 
@@ -86,6 +88,7 @@
             this.treeStockValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeStockValue.HideSelection = false;
             this.treeStockValue.Location = new System.Drawing.Point(16, 33);
             this.treeStockValue.Name = "treeStockValue";
             this.treeStockValue.Size = new System.Drawing.Size(264, 501);
@@ -168,6 +171,7 @@
             this.btnCommSettings.Size = new System.Drawing.Size(48, 48);
             this.btnCommSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnCommSettings, "Configuración de las comunicaciones");
+            this.toolTip_EN.SetToolTip(this.btnCommSettings, "Communication settings");
             this.btnCommSettings.UseVisualStyleBackColor = true;
             this.btnCommSettings.Click += new System.EventHandler(this.btnCommSettings_Click);
             // 
@@ -180,6 +184,7 @@
             this.btnDatabaseSettings.Size = new System.Drawing.Size(48, 48);
             this.btnDatabaseSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnDatabaseSettings, "Configuración de la base de datos");
+            this.toolTip_EN.SetToolTip(this.btnDatabaseSettings, "Database settings");
             this.btnDatabaseSettings.UseVisualStyleBackColor = true;
             this.btnDatabaseSettings.Click += new System.EventHandler(this.btnDatabaseSettings_Click);
             // 
@@ -192,6 +197,7 @@
             this.btnGeneralSettings.Size = new System.Drawing.Size(48, 48);
             this.btnGeneralSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnGeneralSettings, "Configuración general");
+            this.toolTip_EN.SetToolTip(this.btnGeneralSettings, "General settings");
             this.btnGeneralSettings.UseVisualStyleBackColor = true;
             this.btnGeneralSettings.Click += new System.EventHandler(this.btnGeneralSettings_Click);
             // 
@@ -224,6 +230,7 @@
             this.btnShowStockValue.Size = new System.Drawing.Size(24, 24);
             this.btnShowStockValue.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnShowStockValue, "Informacion del valor");
+            this.toolTip_EN.SetToolTip(this.btnShowStockValue, "Stock information");
             this.btnShowStockValue.UseVisualStyleBackColor = true;
             this.btnShowStockValue.Click += new System.EventHandler(this.btnInfoStockValue_Click);
             // 
@@ -236,6 +243,7 @@
             this.btnAddStockValue.Size = new System.Drawing.Size(24, 24);
             this.btnAddStockValue.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnAddStockValue, "Añadir valor");
+            this.toolTip_EN.SetToolTip(this.btnAddStockValue, "Add stock");
             this.btnAddStockValue.UseVisualStyleBackColor = true;
             this.btnAddStockValue.Click += new System.EventHandler(this.btnAddStockValue_Click);
             // 
@@ -287,6 +295,7 @@
         private System.Windows.Forms.Button btnDatabaseSettings;
         private System.Windows.Forms.Button btnGeneralSettings;
         private LiveCharts.WinForms.CartesianChart chartStockValue;
+        private System.Windows.Forms.ToolTip toolTip_EN;
     }
 }
 
