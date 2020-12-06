@@ -46,8 +46,10 @@ namespace Quenya.View
                 if (_api != null)
                 {
                     overview = _api.SearchStockOverview(_stockCode);
-                    if (overview != null)
+                    if (overview != null) {
                         ShowData(overview);
+                        _database.InsertStockOverview(overview);
+                    }
                     else
                         ClearData();
                 }

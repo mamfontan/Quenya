@@ -12,16 +12,16 @@ namespace Quenya.Domain
         [Key, Column("Date", Order = 2)]
         public DateTime Date { get; set; }
 
-        [Column("PriceHigh")]
+        [Column("Max")]
         public double Max { get; set; }
 
-        [Column("PriceLow")]
+        [Column("Min")]
         public double Min { get; set; }
 
-        [Column("PriceOpen")]
+        [Column("Open")]
         public double Open { get; set; }
 
-        [Column("PriceClose")]
+        [Column("Close")]
         public double Close { get; set; }
 
         [Column("Volume")]

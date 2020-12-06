@@ -3,8 +3,10 @@ using LiveCharts.WinForms;
 using LiveCharts.Wpf;
 using Quenya.Common.interfaces;
 using Quenya.Common.messages;
+using Quenya.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
 using System.Windows.Media;
@@ -41,6 +43,8 @@ namespace Quenya.View
         {
             HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings });
 
+            HookMenuEvents();
+
             CreateBasicObjects();
 
             CreateStockValuesTree();
@@ -52,6 +56,17 @@ namespace Quenya.View
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             UnSubscribeToEvents();
+        }
+
+        // HACK El diseñador no enlaza bien los eventos del menu contextual, asi que los lanzamos por codigo
+        private void HookMenuEvents()
+        {
+            menuUpdateDaily.Click += menuUpdateDaily_Click;
+
+            menuUpdate01M.Click += menuUpdate01M_Click;
+            menuUpdate05M.Click += menuUpdate05M_Click;
+            menuUpdate15M.Click += menuUpdate15M_Click;
+            menuUpdate60M.Click += menuUpdate60M_Click;
         }
 
         private void SubscribeToEvents()
@@ -217,30 +232,184 @@ namespace Quenya.View
             }
         }
 
+        private void cmbTimeRange_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbTimeRange.SelectedItem == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            UpdateSelectedDataAndChart();
+        }
+
+        private void treeStockValue_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (cmbTimeRange.SelectedItem == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            UpdateSelectedDataAndChart();
+        }
+
+        private void UpdateSelectedDataAndChart()
+        {
+            var selectedTimeRange = cmbTimeRange.SelectedValue;
+            var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
+
+            // Update datagrid
+            switch (selectedTimeRange)
+            {
+                case 0: // Daily values
+                    var dataDaily = _database.GetDailyRatePrices(selectedStockValueCode);
+                    dgStockValueData.DataSource = dataDaily;
+                    break;
+                case 1: // One minute rate
+                    var data01M = _database.GetOneMinuteRatePrices(selectedStockValueCode);
+                    dgStockValueData.DataSource = data01M;
+                    break;
+                case 2: // Five minute rate
+                    var data05M = _database.GetFiveMinuteRatePrices(selectedStockValueCode);
+                    dgStockValueData.DataSource = data05M;
+                    break;
+                case 3: // Fifteen minute rate
+                    var data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode);
+                    dgStockValueData.DataSource = data15M;
+                    break;
+                case 4: // Sixty minute rate
+                    var data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode);
+                    dgStockValueData.DataSource = data60M;
+                    break;
+            }
+
+            // Update chart
+        }
+
         #region Menu Events
         private void menuUpdate01M_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (_api == null || _database == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
+            var data = _api.SearchStockPrice01M(selectedStockValueCode);
+            if (data != null && data.Any())
+            {
+                var lastDate = _database.GetLastUpdateFor01MinValues(selectedStockValueCode);
+                if (lastDate != null)
+                    data = data.Where(x => x.Date > lastDate).ToList();
+
+                var result = _database.InsertOneMinuteRatePrices(data);
+                if (result.MsgType != MSG_TYPE.SUCCESS)
+                {
+                    Cursor = Cursors.Default;
+                    ShowMessageToUser(result);
+                }
+            }
+
+            Cursor = Cursors.Default;
         }
 
         private void menuUpdate05M_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (_api == null || _database == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
+            var data = _api.SearchStockPrice05M(selectedStockValueCode);
+            if (data != null && data.Any())
+            {
+                var lastDate = _database.GetLastUpdateFor05MinValues(selectedStockValueCode);
+                if (lastDate != null)
+                    data = data.Where(x => x.Date > lastDate).ToList();
+
+                var result = _database.InsertFiveMinuteRatePrices(data);
+                if (result.MsgType != MSG_TYPE.SUCCESS) {
+                    Cursor = Cursors.Default;
+                    ShowMessageToUser(result);
+                }
+            }
+
+            Cursor = Cursors.Default;
         }
 
         private void menuUpdate15M_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (_api == null || _database == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
+            var data = _api.SearchStockPrice15M(selectedStockValueCode);
+            if (data != null && data.Any())
+            {
+                var lastDate = _database.GetLastUpdateFor15MinValues(selectedStockValueCode);
+                if (lastDate != null)
+                    data = data.Where(x => x.Date > lastDate).ToList();
+
+                var result = _database.InsertFifteenMinuteRatePrices(data);
+                if (result.MsgType != MSG_TYPE.SUCCESS)
+                {
+                    Cursor = Cursors.Default;
+                    ShowMessageToUser(result);
+                }
+            }
+
+            Cursor = Cursors.Default;
         }
 
         private void menuUpdate60M_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (_api == null || _database == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
+            var data = _api.SearchStockPrice60M(selectedStockValueCode);
+            if (data != null && data.Any())
+            {
+                var lastDate = _database.GetLastUpdateFor60MinValues(selectedStockValueCode);
+                if (lastDate != null)
+                    data = data.Where(x => x.Date > lastDate).ToList();
+
+                var result = _database.InsertSixtyMinuteRatePrices(data);
+                if (result.MsgType != MSG_TYPE.SUCCESS)
+                {
+                    Cursor = Cursors.Default;
+                    ShowMessageToUser(result);
+                }
+            }
+
+            Cursor = Cursors.Default;
         }
 
         private void menuUpdateDaily_Click(object sender, EventArgs e)
         {
-            // TODO
+            if (_api == null || _database == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
+                return;
+
+            Cursor = Cursors.WaitCursor;
+
+            var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
+            var data = _api.SearchDailyStock(selectedStockValueCode);
+            if (data != null && data.Any())
+            {
+                var lastDate = _database.GetLastUpdateForDailyValues(selectedStockValueCode);
+                if (lastDate != null)
+                    data = data.Where(x => x.Date > lastDate).ToList();
+
+                var result = _database.InsertDailyRatePrices(data);
+                if (result.MsgType != MSG_TYPE.SUCCESS)
+                {
+                    Cursor = Cursors.Default;
+                    ShowMessageToUser(result);
+                }
+            }
+
+            Cursor = Cursors.Default;
+
         }
         #endregion
     }

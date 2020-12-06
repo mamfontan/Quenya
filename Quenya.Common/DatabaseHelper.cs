@@ -135,6 +135,86 @@ namespace Quenya.Common
             return result;
         }
 
+        public List<Daily> GetDailyRatePrices(string stockCode)
+        {
+            var result = new List<Daily>();
+
+            try
+            {
+                result = _stockContext.Dailys.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+            }
+            catch (Exception error)
+            {
+                // TODO Log error
+            }
+
+            return result;
+        }
+
+        public List<StockPrice01M> GetOneMinuteRatePrices(string stockCode)
+        {
+            var result = new List<StockPrice01M>();
+
+            try
+            {
+                result = _stockContext.OneMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+            }
+            catch (Exception error)
+            {
+                // TODO Log error
+            }
+
+            return result;
+        }
+
+        public List<StockPrice05M> GetFiveMinuteRatePrices(string stockCode)
+        {
+            var result = new List<StockPrice05M>();
+
+            try
+            {
+                result = _stockContext.FiveMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+            }
+            catch (Exception error)
+            {
+                // TODO Log error
+            }
+
+            return result;
+        }
+
+        public List<StockPrice15M> GetFifteenMinuteRatePrices(string stockCode)
+        {
+            var result = new List<StockPrice15M>();
+
+            try
+            {
+                result = _stockContext.FifteenMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+            }
+            catch (Exception error)
+            {
+                // TODO Log error
+            }
+
+            return result;
+        }
+
+        public List<StockPrice60M> GetSixtyMinuteRatePrices(string stockCode)
+        {
+            var result = new List<StockPrice60M>();
+
+            try
+            {
+                result = _stockContext.SixtyMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+            }
+            catch (Exception error)
+            {
+                // TODO Log error
+            }
+
+            return result;
+        }
+
         public StatusMessage InsertStockValue(StockValue data)
         {
             StatusMessage result = new StatusMessage();
@@ -175,6 +255,116 @@ namespace Quenya.Common
 
                         result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos insertados correctamente");
                     }
+                }
+                catch (Exception error)
+                {
+                    result = GetErrorMessage(error);
+                }
+            }
+
+            return result;
+        }
+
+        public StatusMessage InsertDailyRatePrices(List<Daily> data)
+        {
+            StatusMessage result = new StatusMessage();
+
+            if (_stockContext != null)
+            {
+                try
+                {
+                    _stockContext.Dailys.AddRange(data);
+                    _stockContext.SaveChanges();
+
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos insertados correctamente");
+                }
+                catch (Exception error)
+                {
+                    result = GetErrorMessage(error);
+                }
+            }
+
+            return result;
+        }
+
+        public StatusMessage InsertOneMinuteRatePrices(List<StockPrice01M> data)
+        {
+            StatusMessage result = new StatusMessage();
+
+            if (_stockContext != null)
+            {
+                try
+                {
+                    _stockContext.OneMinuteValues.AddRange(data);
+                    _stockContext.SaveChanges();
+
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos insertados correctamente");
+                }
+                catch (Exception error)
+                {
+                    result = GetErrorMessage(error);
+                }
+            }
+
+            return result;
+        }
+
+        public StatusMessage InsertFiveMinuteRatePrices(List<StockPrice05M> data)
+        {
+            StatusMessage result = new StatusMessage();
+
+            if (_stockContext != null)
+            {
+                try
+                {
+                    _stockContext.FiveMinuteValues.AddRange(data);
+                    _stockContext.SaveChanges();
+
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos insertados correctamente");
+                }
+                catch (Exception error)
+                {
+                    result = GetErrorMessage(error);
+                }
+            }
+
+            return result;
+        }
+
+        public StatusMessage InsertFifteenMinuteRatePrices(List<StockPrice15M> data)
+        {
+            StatusMessage result = new StatusMessage();
+
+            if (_stockContext != null)
+            {
+                try
+                {
+                    _stockContext.FifteenMinuteValues.AddRange(data);
+                    _stockContext.SaveChanges();
+
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos insertados correctamente");
+                }
+                catch (Exception error)
+                {
+                    result = GetErrorMessage(error);
+                }
+            }
+
+            return result;
+        }
+
+        public StatusMessage InsertSixtyMinuteRatePrices(List<StockPrice60M> data)
+        {
+            StatusMessage result = new StatusMessage();
+
+            if (_stockContext != null)
+            {
+                try
+                {
+                    _stockContext.SixtyMinuteValues.AddRange(data);
+                    _stockContext.SaveChanges();
+
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "Datos insertados correctamente");
                 }
                 catch (Exception error)
                 {
@@ -233,6 +423,56 @@ namespace Quenya.Common
             }
 
             return result;
+        }
+
+        public DateTime? GetLastUpdateForDailyValues(string stockCode)
+        {
+            var newestData = _stockContext.Dailys.Where(x => x.Code == stockCode).OrderByDescending(t => t.Date).FirstOrDefault();
+
+            if (newestData == null)
+                return null;
+            else
+                return newestData.Date;
+        }
+
+        public DateTime? GetLastUpdateFor01MinValues(string stockCode)
+        {
+            var newestData = _stockContext.OneMinuteValues.Where(x => x.Code == stockCode).OrderByDescending(t => t.Date).FirstOrDefault();
+
+            if (newestData == null)
+                return null;
+            else
+                return newestData.Date;
+        }
+
+        public DateTime? GetLastUpdateFor05MinValues(string stockCode)
+        {
+            var newestData = _stockContext.FiveMinuteValues.Where(x => x.Code == stockCode).OrderByDescending(t => t.Date).FirstOrDefault();
+
+            if (newestData == null)
+                return null;
+            else
+                return newestData.Date;
+        }
+
+        public DateTime? GetLastUpdateFor15MinValues(string stockCode)
+        {
+            var newestData = _stockContext.FifteenMinuteValues.Where(x => x.Code == stockCode).OrderByDescending(t => t.Date).FirstOrDefault();
+
+            if (newestData == null)
+                return null;
+            else
+                return newestData.Date;
+        }
+
+        public DateTime? GetLastUpdateFor60MinValues(string stockCode)
+        {
+            var newestData = _stockContext.SixtyMinuteValues.Where(x => x.Code == stockCode).OrderByDescending(t => t.Date).FirstOrDefault();
+
+            if (newestData == null)
+                return null;
+            else
+                return newestData.Date;
         }
 
         private StatusMessage GetErrorMessage(Exception error)

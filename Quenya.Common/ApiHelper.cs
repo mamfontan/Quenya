@@ -10,8 +10,6 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Timers;
-//using System.Threading;
-//using System.Timers;
 using TinyMessenger;
 
 namespace Quenya.Common
@@ -131,7 +129,7 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPrice01M> SearchStockPrice1M(string stockCode)
+        public List<StockPrice01M> SearchStockPrice01M(string stockCode)
         {
             var result = new List<StockPrice01M>();
 
@@ -157,7 +155,7 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPrice05M> SearchStockPrice5M(string stockCode)
+        public List<StockPrice05M> SearchStockPrice05M(string stockCode)
         {
             var result = new List<StockPrice05M>();
 
@@ -245,8 +243,6 @@ namespace Quenya.Common
 
             try
             {
-                //while (!_timeHelper.AllowRequest()) { }
-
                 WebResponse webResponse = request.GetResponse();
                 Stream webStream = webResponse.GetResponseStream();
                 StreamReader responseReader = new StreamReader(webStream);
