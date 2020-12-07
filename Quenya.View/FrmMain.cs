@@ -19,10 +19,11 @@ namespace Quenya.View
     {
         private List<KeyValuePair<int, string>> _timeRangeList;
 
+        private List<KeyValuePair<int, string>> _systemsList;
+
         #region Tokens de subrcripcion a eventos
         private TinyMessageSubscriptionToken _tokenMsgUpdateApiUse;
         #endregion
-
 
         public FrmMain()
         {
@@ -41,7 +42,7 @@ namespace Quenya.View
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings });
+            HookButtonEvents(new List<Control>() { btnAddStockValue, btnDeleteStockValue, btnShowStockValue, btnCommSettings, btnDatabaseSettings, btnGeneralSettings, btnSystemGo });
 
             HookMenuEvents();
 
@@ -146,6 +147,15 @@ namespace Quenya.View
             };
 
             SetComboBox(cmbTimeRange, _timeRangeList, "Key", "Value");
+
+            _systemsList = new List<KeyValuePair<int, string>>()
+            {
+                new KeyValuePair<int, string>(0, "Three turtles"),
+                new KeyValuePair<int, string>(1, "Unknow method"),
+                new KeyValuePair<int, string>(2, "Unknow method"),
+            };
+
+            SetComboBox(cmbSystem, _systemsList, "Key", "Value");
         }
 
         private void CreateStockValuesTree()
@@ -410,6 +420,24 @@ namespace Quenya.View
 
             Cursor = Cursors.Default;
 
+        }
+        #endregion
+
+        #region Systems
+        private void btnSystemGo_Click(object sender, EventArgs e)
+        {
+            if (cmbSystem.SelectedItem != null)
+            {
+                var selectedSystem = (int)cmbSystem.SelectedValue;
+                switch(selectedSystem)
+                {
+                    case 0:
+                        break;
+                    default:
+                        MessageBox.Show("Not implemented", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                }
+            }
         }
         #endregion
     }

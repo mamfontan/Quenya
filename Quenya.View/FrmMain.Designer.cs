@@ -49,6 +49,8 @@
             this.btnDatabaseSettings = new System.Windows.Forms.Button();
             this.btnGeneralSettings = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSystemGo = new System.Windows.Forms.Button();
+            this.cmbSystem = new System.Windows.Forms.ComboBox();
             this.lblUsage = new System.Windows.Forms.Label();
             this.cmbTimeRange = new System.Windows.Forms.ComboBox();
             this.btnShowStockValue = new System.Windows.Forms.Button();
@@ -282,6 +284,8 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnSystemGo);
+            this.groupBox4.Controls.Add(this.cmbSystem);
             this.groupBox4.Controls.Add(this.lblUsage);
             this.groupBox4.Controls.Add(this.cmbTimeRange);
             this.groupBox4.Location = new System.Drawing.Point(307, 9);
@@ -291,6 +295,32 @@
             this.groupBox4.Size = new System.Drawing.Size(618, 50);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
+            // 
+            // btnSystemGo
+            // 
+            this.btnSystemGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSystemGo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSystemGo.BackgroundImage")));
+            this.btnSystemGo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSystemGo.Location = new System.Drawing.Point(502, 16);
+            this.btnSystemGo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSystemGo.Name = "btnSystemGo";
+            this.btnSystemGo.Size = new System.Drawing.Size(28, 28);
+            this.btnSystemGo.TabIndex = 3;
+            this.toolTip_ES.SetToolTip(this.btnSystemGo, "Añadir valor");
+            this.toolTip_EN.SetToolTip(this.btnSystemGo, "Add stock");
+            this.btnSystemGo.UseVisualStyleBackColor = true;
+            this.btnSystemGo.Click += new System.EventHandler(this.btnSystemGo_Click);
+            // 
+            // cmbSystem
+            // 
+            this.cmbSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSystem.FormattingEnabled = true;
+            this.cmbSystem.Location = new System.Drawing.Point(326, 19);
+            this.cmbSystem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbSystem.Name = "cmbSystem";
+            this.cmbSystem.Size = new System.Drawing.Size(170, 23);
+            this.cmbSystem.TabIndex = 2;
             // 
             // lblUsage
             // 
@@ -402,6 +432,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuUpdate15M;
         private System.Windows.Forms.ToolStripMenuItem menuUpdate60M;
+        private System.Windows.Forms.Button btnSystemGo;
+        private System.Windows.Forms.ComboBox cmbSystem;
     }
 }
 
