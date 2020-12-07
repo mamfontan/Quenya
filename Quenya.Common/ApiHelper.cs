@@ -20,11 +20,17 @@ namespace Quenya.Common
 
         private const string LIMIT_REACHED = "Thank you for using Alpha Vantage!";
 
+        private const string INVALID_CALL = "Invalid API call";
+
         private string SEARCH_ENDPOINT = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=***&apikey=";
 
         private string COMPANY_OVERVIEW_ENDPOINT = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=***&apikey=";
 
-        private string DAILY_ENDPOINT = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=***&apikey=";
+        // Last 100 entries
+        private string DAILY_ENDPOINT_COMPACT = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=***&apikey="; 
+
+        // All entries
+        private string DAILY_ENDPOINT_FULL = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=***&outputsize=full&apikey=";
 
         private string PRICE_60M_ENDPOINT = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=***&interval=60min&apikey=";
 
@@ -75,7 +81,7 @@ namespace Quenya.Common
                 var strUrl = SEARCH_ENDPOINT.Replace("***", strFilter) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                     result = CreateStockValuesFromJson(endPointResult);
                 else
                     _bus?.Publish(new MsgReportToUser(this, new StatusMessage() { MsgType = MSG_TYPE.WARNING, MsgText = "Hemos alcanzado el limite de llamadas a la api" }));
@@ -93,10 +99,16 @@ namespace Quenya.Common
                 var strUrl = COMPANY_OVERVIEW_ENDPOINT.Replace("***", stockCode) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                 {
-                    result = CreateStockOverviewFromJson(endPointResult);
-                    result.Code = stockCode;
+                    // Hack: A veces no hay error, pero tampoco nos devuelven datos
+                    if (endPointResult.Equals("{}"))
+                        return null;
+                    else
+                    {
+                        result = CreateStockOverviewFromJson(endPointResult);
+                        result.Code = stockCode;
+                    }
                 }
                 else
                     _bus?.Publish(new MsgReportToUser(this, new StatusMessage() { MsgType = MSG_TYPE.WARNING, MsgText = "Hemos alcanzado el limite de llamadas a la api" }));
@@ -111,10 +123,10 @@ namespace Quenya.Common
 
             if (!string.IsNullOrEmpty(stockCode))
             {
-                var strUrl = DAILY_ENDPOINT.Replace("***", stockCode) + _keyHelper.GetKey();
+                var strUrl = DAILY_ENDPOINT_COMPACT.Replace("***", stockCode) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                 {
                     result = CreateDailyStockValuesFromJson(endPointResult);
 
@@ -138,7 +150,7 @@ namespace Quenya.Common
                 var strUrl = PRICE_01M_ENDPOINT.Replace("***", stockCode) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                 {
                     result = CreateStockValues1MFromJson(endPointResult);
 
@@ -164,7 +176,7 @@ namespace Quenya.Common
                 var strUrl = PRICE_05M_ENDPOINT.Replace("***", stockCode) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                 {
                     result = CreateStockValues5MFromJson(endPointResult);
 
@@ -190,7 +202,7 @@ namespace Quenya.Common
                 var strUrl = PRICE_15M_ENDPOINT.Replace("***", stockCode) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                 {
                     result = CreateStockValues15MFromJson(endPointResult);
 
@@ -216,7 +228,7 @@ namespace Quenya.Common
                 var strUrl = PRICE_60M_ENDPOINT.Replace("***", stockCode) + _keyHelper.GetKey();
                 var endPointResult = CallEndPoint(strUrl);
 
-                if (!endPointResult.Contains(LIMIT_REACHED))
+                if (!endPointResult.Contains(LIMIT_REACHED) && !endPointResult.Contains(INVALID_CALL))
                 {
                     result = CreateStockValues60MFromJson(endPointResult);
 

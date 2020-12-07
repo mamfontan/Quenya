@@ -31,15 +31,15 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.txtCountry = new System.Windows.Forms.TextBox();
+            this.lblCurrency = new System.Windows.Forms.Label();
+            this.txtCurrency = new System.Windows.Forms.TextBox();
             this.cmbFilter = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtStockValueName = new System.Windows.Forms.TextBox();
             this.lblCode = new System.Windows.Forms.Label();
-            this.lblCurrency = new System.Windows.Forms.Label();
-            this.txtCurrency = new System.Windows.Forms.TextBox();
-            this.lblCountry = new System.Windows.Forms.Label();
-            this.txtCountry = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +85,43 @@
             this.groupBox1.Size = new System.Drawing.Size(472, 137);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = " Search stock value  ";
+            // 
+            // lblCountry
+            // 
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.Location = new System.Drawing.Point(343, 85);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(53, 15);
+            this.lblCountry.TabIndex = 7;
+            this.lblCountry.Text = "Country:";
+            // 
+            // txtCountry
+            // 
+            this.txtCountry.Location = new System.Drawing.Point(343, 102);
+            this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.ReadOnly = true;
+            this.txtCountry.Size = new System.Drawing.Size(116, 23);
+            this.txtCountry.TabIndex = 6;
+            // 
+            // lblCurrency
+            // 
+            this.lblCurrency.AutoSize = true;
+            this.lblCurrency.Location = new System.Drawing.Point(178, 85);
+            this.lblCurrency.Name = "lblCurrency";
+            this.lblCurrency.Size = new System.Drawing.Size(58, 15);
+            this.lblCurrency.TabIndex = 5;
+            this.lblCurrency.Text = "Currency:";
+            // 
+            // txtCurrency
+            // 
+            this.txtCurrency.Location = new System.Drawing.Point(178, 102);
+            this.txtCurrency.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCurrency.Name = "txtCurrency";
+            this.txtCurrency.ReadOnly = true;
+            this.txtCurrency.Size = new System.Drawing.Size(116, 23);
+            this.txtCurrency.TabIndex = 4;
             // 
             // cmbFilter
             // 
@@ -135,42 +171,6 @@
             this.lblCode.Size = new System.Drawing.Size(38, 15);
             this.lblCode.TabIndex = 1;
             this.lblCode.Text = "Code:";
-            // 
-            // lblCurrency
-            // 
-            this.lblCurrency.AutoSize = true;
-            this.lblCurrency.Location = new System.Drawing.Point(178, 85);
-            this.lblCurrency.Name = "lblCurrency";
-            this.lblCurrency.Size = new System.Drawing.Size(58, 15);
-            this.lblCurrency.TabIndex = 5;
-            this.lblCurrency.Text = "Currency:";
-            // 
-            // txtCurrency
-            // 
-            this.txtCurrency.Location = new System.Drawing.Point(178, 102);
-            this.txtCurrency.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCurrency.Name = "txtCurrency";
-            this.txtCurrency.ReadOnly = true;
-            this.txtCurrency.Size = new System.Drawing.Size(116, 23);
-            this.txtCurrency.TabIndex = 4;
-            // 
-            // lblCountry
-            // 
-            this.lblCountry.AutoSize = true;
-            this.lblCountry.Location = new System.Drawing.Point(343, 85);
-            this.lblCountry.Name = "lblCountry";
-            this.lblCountry.Size = new System.Drawing.Size(53, 15);
-            this.lblCountry.TabIndex = 7;
-            this.lblCountry.Text = "Country:";
-            // 
-            // txtCountry
-            // 
-            this.txtCountry.Location = new System.Drawing.Point(343, 102);
-            this.txtCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.ReadOnly = true;
-            this.txtCountry.Size = new System.Drawing.Size(116, 23);
-            this.txtCountry.TabIndex = 6;
             // 
             // FrmAddStockValue
             // 

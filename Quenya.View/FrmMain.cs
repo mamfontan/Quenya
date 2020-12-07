@@ -185,12 +185,6 @@ namespace Quenya.View
                 {
                     Title = "Series 1",
                     Values = new ChartValues<double> {4, 6, 5, 2, 7}
-                },
-                new LineSeries
-                {
-                    Title = "Series 2",
-                    Values = new ChartValues<double> {6, 7, 3, 4, 6},
-                    PointGeometry = null
                 }
             };
 
@@ -260,32 +254,88 @@ namespace Quenya.View
             var selectedTimeRange = cmbTimeRange.SelectedValue;
             var selectedStockValueCode = treeStockValue.SelectedNode.Tag.ToString();
 
+            List<IStockPrice> data = new List<IStockPrice>();
+
             // Update datagrid
             switch (selectedTimeRange)
             {
                 case 0: // Daily values
-                    var dataDaily = _database.GetDailyRatePrices(selectedStockValueCode);
+                    List<IStockPrice> dataDaily = _database.GetDailyRatePrices(selectedStockValueCode);
                     dgStockValueData.DataSource = dataDaily;
+                    UpdateChart(dataDaily);
                     break;
                 case 1: // One minute rate
-                    var data01M = _database.GetOneMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data01M = _database.GetOneMinuteRatePrices(selectedStockValueCode);
                     dgStockValueData.DataSource = data01M;
+                    UpdateChart(data01M);
                     break;
                 case 2: // Five minute rate
-                    var data05M = _database.GetFiveMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data05M = _database.GetFiveMinuteRatePrices(selectedStockValueCode);
                     dgStockValueData.DataSource = data05M;
+                    UpdateChart(data05M);
                     break;
                 case 3: // Fifteen minute rate
-                    var data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode);
                     dgStockValueData.DataSource = data15M;
+                    UpdateChart(data15M);
                     break;
                 case 4: // Sixty minute rate
-                    var data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode);
                     dgStockValueData.DataSource = data60M;
+                    UpdateChart(data60M);
                     break;
             }
+        }
 
-            // Update chart
+        private void UpdateChart(List<IStockPrice> data)
+        {
+            splitContainer.Panel2.Controls.Clear();
+
+            if (data != null && data.Any())
+            {
+
+                CartesianChart chart = new CartesianChart();
+
+                ChartValues<double> max = new ChartValues<double>();
+                ChartValues<double> min = new ChartValues<double>();
+                foreach (var item in data)
+                {
+                    max.Add(item.Max);
+                    min.Add(item.Min);
+                }
+
+                chart.Series = new SeriesCollection
+                {
+                    new LineSeries
+                    {
+                        Title = "Max",
+                        Values = max,
+                    },
+                    new LineSeries
+                    {
+                        Title = "Min",
+                        Values = min,
+                    },
+                };
+
+                chart.AxisX.Add(new Axis
+                {
+                    Title = data[0].Code,
+                    Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
+                });
+
+                chart.AxisY.Add(new Axis
+                {
+                    Title = "Values",
+                    LabelFormatter = value => value.ToString("C")
+                });
+
+                chart.LegendLocation = LegendLocation.Right;
+
+                
+                splitContainer.Panel2.Controls.Add(chart);
+                chart.Dock = DockStyle.Fill;
+            }
         }
 
         #region Menu Events

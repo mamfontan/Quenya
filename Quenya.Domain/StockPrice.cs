@@ -6,7 +6,7 @@ namespace Quenya.Domain
 {
     public enum MOVEMENT { UP, DOWN, NO_CHANGE}
 
-    public class StockPrice
+    public class StockPrice : IStockPrice
     {
         [Key, Column("Code", Order = 1), MaxLength(8)]
         public string Code { get; set; }

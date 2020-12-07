@@ -135,13 +135,13 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPriceDaily> GetDailyRatePrices(string stockCode)
+        public List<IStockPrice> GetDailyRatePrices(string stockCode)
         {
-            var result = new List<StockPriceDaily>();
+            var result = new List<IStockPrice>();
 
             try
             {
-                result = _stockContext.Dailys.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+                result.AddRange(_stockContext.Dailys.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
             }
             catch (Exception error)
             {
@@ -151,13 +151,13 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPrice01M> GetOneMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetOneMinuteRatePrices(string stockCode)
         {
-            var result = new List<StockPrice01M>();
+            var result = new List<IStockPrice>();
 
             try
             {
-                result = _stockContext.OneMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+                result.AddRange(_stockContext.OneMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
             }
             catch (Exception error)
             {
@@ -167,13 +167,13 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPrice05M> GetFiveMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetFiveMinuteRatePrices(string stockCode)
         {
-            var result = new List<StockPrice05M>();
+            var result = new List<IStockPrice>();
 
             try
             {
-                result = _stockContext.FiveMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+                result.AddRange(_stockContext.FiveMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
             }
             catch (Exception error)
             {
@@ -183,13 +183,13 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPrice15M> GetFifteenMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetFifteenMinuteRatePrices(string stockCode)
         {
-            var result = new List<StockPrice15M>();
+            var result = new List<IStockPrice>();
 
             try
             {
-                result = _stockContext.FifteenMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+                result.AddRange(_stockContext.FifteenMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
             }
             catch (Exception error)
             {
@@ -199,13 +199,13 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<StockPrice60M> GetSixtyMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetSixtyMinuteRatePrices(string stockCode)
         {
-            var result = new List<StockPrice60M>();
+            var result = new List<IStockPrice>();
 
             try
             {
-                result = _stockContext.SixtyMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList();
+                result.AddRange(_stockContext.SixtyMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
             }
             catch (Exception error)
             {
