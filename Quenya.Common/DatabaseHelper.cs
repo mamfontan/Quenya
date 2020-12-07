@@ -135,9 +135,9 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<Daily> GetDailyRatePrices(string stockCode)
+        public List<StockPriceDaily> GetDailyRatePrices(string stockCode)
         {
-            var result = new List<Daily>();
+            var result = new List<StockPriceDaily>();
 
             try
             {
@@ -265,7 +265,7 @@ namespace Quenya.Common
             return result;
         }
 
-        public StatusMessage InsertDailyRatePrices(List<Daily> data)
+        public StatusMessage InsertDailyRatePrices(List<StockPriceDaily> data)
         {
             StatusMessage result = new StatusMessage();
 

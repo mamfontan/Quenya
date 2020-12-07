@@ -1,5 +1,4 @@
-﻿using Quenya.Domain;
-using TinyMessenger;
+﻿using TinyMessenger;
 
 namespace Quenya.Common.messages
 {

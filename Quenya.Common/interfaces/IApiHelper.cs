@@ -9,7 +9,7 @@ namespace Quenya.Common.interfaces
 
         Overview SearchStockOverview(string stockCode);
 
-        List<Daily> SearchDailyStock(string stockCode);
+        List<StockPriceDaily> SearchDailyStock(string stockCode);
 
         List<StockPrice01M> SearchStockPrice01M(string stockCode);
 

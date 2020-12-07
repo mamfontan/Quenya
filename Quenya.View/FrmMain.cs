@@ -1,5 +1,4 @@
 ﻿using LiveCharts;
-using LiveCharts.WinForms;
 using LiveCharts.Wpf;
 using Quenya.Common.interfaces;
 using Quenya.Common.messages;
@@ -8,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.Integration;
-using System.Windows.Media;
 using TinyMessenger;
 using CartesianChart = LiveCharts.WinForms.CartesianChart;
 

@@ -105,9 +105,9 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<Daily> SearchDailyStock(string stockCode)
+        public List<StockPriceDaily> SearchDailyStock(string stockCode)
         {
-            var result = new List<Daily>();
+            var result = new List<StockPriceDaily>();
 
             if (!string.IsNullOrEmpty(stockCode))
             {
@@ -323,9 +323,9 @@ namespace Quenya.Common
             return result;
         }
 
-        private List<Daily> CreateDailyStockValuesFromJson(string data)
+        private List<StockPriceDaily> CreateDailyStockValuesFromJson(string data)
         {
-            var result = new List<Daily>();
+            var result = new List<StockPriceDaily>();
 
             var jsonString = data;
 
@@ -374,7 +374,7 @@ namespace Quenya.Common
                                 reader.Read(); reader.Read();
                                 var strVolume = reader.Value.ToString();
 
-                                result.Add(new Daily()
+                                result.Add(new StockPriceDaily()
                                 {
                                     Date = Convert.ToDateTime(strDate),
                                     Open = Double.Parse(strOpen, CultureInfo.InvariantCulture),

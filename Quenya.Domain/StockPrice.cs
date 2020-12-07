@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Quenya.Domain
 {
+    public enum MOVEMENT { UP, DOWN, NO_CHANGE}
+
     public class StockPrice
     {
         [Key, Column("Code", Order = 1), MaxLength(8)]
@@ -26,5 +28,20 @@ namespace Quenya.Domain
 
         [Column("Volume")]
         public double Volume { get; set; }
+
+        public MOVEMENT Movement 
+        { 
+            get
+            {
+                if (Open > Close)
+                    return MOVEMENT.DOWN;
+                else
+                    if (Open < Close)
+                    return MOVEMENT.UP;
+                else
+                    return MOVEMENT.NO_CHANGE;
+
+            }
+        }
     }
 }

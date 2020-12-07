@@ -26,7 +26,7 @@ namespace Quenya.Common.interfaces
 
         StatusMessage DeleteStockValue(string stockCode);
 
-        List<Daily> GetDailyRatePrices(string selectedStockValueCode);
+        List<StockPriceDaily> GetDailyRatePrices(string selectedStockValueCode);
 
         List<StockPrice01M> GetOneMinuteRatePrices(string selectedStockValueCode);
 
@@ -36,7 +36,7 @@ namespace Quenya.Common.interfaces
 
         List<StockPrice60M> GetSixtyMinuteRatePrices(string selectedStockValueCode);
 
-        StatusMessage InsertDailyRatePrices(List<Daily> data);
+        StatusMessage InsertDailyRatePrices(List<StockPriceDaily> data);
 
         StatusMessage InsertOneMinuteRatePrices(List<StockPrice01M> data);
 
