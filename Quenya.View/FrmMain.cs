@@ -304,11 +304,16 @@ namespace Quenya.View
                 if (lastDate != null)
                     data = data.Where(x => x.Date > lastDate).ToList();
 
-                var result = _database.InsertOneMinuteRatePrices(data);
-                if (result.MsgType != MSG_TYPE.SUCCESS)
+                if (data.Any())
                 {
-                    Cursor = Cursors.Default;
-                    ShowMessageToUser(result);
+                    var result = _database.InsertOneMinuteRatePrices(data);
+                    if (result.MsgType != MSG_TYPE.SUCCESS)
+                    {
+                        Cursor = Cursors.Default;
+                        ShowMessageToUser(result);
+                    }
+                    else
+                        UpdateSelectedDataAndChart();
                 }
             }
 
@@ -330,10 +335,16 @@ namespace Quenya.View
                 if (lastDate != null)
                     data = data.Where(x => x.Date > lastDate).ToList();
 
-                var result = _database.InsertFiveMinuteRatePrices(data);
-                if (result.MsgType != MSG_TYPE.SUCCESS) {
-                    Cursor = Cursors.Default;
-                    ShowMessageToUser(result);
+                if (data.Any())
+                {
+                    var result = _database.InsertFiveMinuteRatePrices(data);
+                    if (result.MsgType != MSG_TYPE.SUCCESS)
+                    {
+                        Cursor = Cursors.Default;
+                        ShowMessageToUser(result);
+                    }
+                    else
+                        UpdateSelectedDataAndChart();
                 }
             }
 
@@ -355,11 +366,16 @@ namespace Quenya.View
                 if (lastDate != null)
                     data = data.Where(x => x.Date > lastDate).ToList();
 
-                var result = _database.InsertFifteenMinuteRatePrices(data);
-                if (result.MsgType != MSG_TYPE.SUCCESS)
+                if (data.Any())
                 {
-                    Cursor = Cursors.Default;
-                    ShowMessageToUser(result);
+                    var result = _database.InsertFifteenMinuteRatePrices(data);
+                    if (result.MsgType != MSG_TYPE.SUCCESS)
+                    {
+                        Cursor = Cursors.Default;
+                        ShowMessageToUser(result);
+                    }
+                    else
+                        UpdateSelectedDataAndChart();
                 }
             }
 
@@ -381,11 +397,16 @@ namespace Quenya.View
                 if (lastDate != null)
                     data = data.Where(x => x.Date > lastDate).ToList();
 
-                var result = _database.InsertSixtyMinuteRatePrices(data);
-                if (result.MsgType != MSG_TYPE.SUCCESS)
+                if (data.Any())
                 {
-                    Cursor = Cursors.Default;
-                    ShowMessageToUser(result);
+                    var result = _database.InsertSixtyMinuteRatePrices(data);
+                    if (result.MsgType != MSG_TYPE.SUCCESS)
+                    {
+                        Cursor = Cursors.Default;
+                        ShowMessageToUser(result);
+                    }
+                    else
+                        UpdateSelectedDataAndChart();
                 }
             }
 
@@ -407,11 +428,16 @@ namespace Quenya.View
                 if (lastDate != null)
                     data = data.Where(x => x.Date > lastDate).ToList();
 
-                var result = _database.InsertDailyRatePrices(data);
-                if (result.MsgType != MSG_TYPE.SUCCESS)
+                if (data.Any())
                 {
-                    Cursor = Cursors.Default;
-                    ShowMessageToUser(result);
+                    var result = _database.InsertDailyRatePrices(data);
+                    if (result.MsgType != MSG_TYPE.SUCCESS)
+                    {
+                        Cursor = Cursors.Default;
+                        ShowMessageToUser(result);
+                    }
+                    else
+                        UpdateSelectedDataAndChart();
                 }
             }
 
@@ -429,6 +455,8 @@ namespace Quenya.View
                 switch(selectedSystem)
                 {
                     case 0:
+                        var form = new FrmSystem001(_database, _bus);
+                        form.Show();
                         break;
                     default:
                         MessageBox.Show("Not implemented", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
