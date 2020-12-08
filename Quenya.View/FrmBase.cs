@@ -17,6 +17,8 @@ namespace Quenya.View
 
         internal ITinyMessengerHub _bus;
 
+        internal ILoggerHelper _log;
+
         public FrmBase()
         {
             InitializeComponent();
