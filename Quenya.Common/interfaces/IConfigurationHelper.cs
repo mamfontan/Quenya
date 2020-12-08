@@ -16,6 +16,8 @@
 
         string DbPassword { get; set; }
 
+        string ExportFolder { get; set; }
+
         void Save();
     }
 }

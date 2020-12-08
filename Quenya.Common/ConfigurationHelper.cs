@@ -47,6 +47,12 @@ namespace Quenya.Common
             set { _config.DbPassword = value; }
         }
 
+        public string ExportFolder
+        {
+            get { return _config.ExportFolder; }
+            set { _config.ExportFolder = value; }
+        }
+
         public ConfigurationHelper()
         {
             if (!CheckConfigFile())
@@ -111,6 +117,7 @@ namespace Quenya.Common
             catch (Exception error)
             {
                 // TODO Log error
+                Console.WriteLine(error.Message);
             }
 
             return result;

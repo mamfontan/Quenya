@@ -1,4 +1,5 @@
-﻿using Quenya.Common.interfaces;
+﻿using Quenya.Common;
+using Quenya.Common.interfaces;
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ namespace Quenya.View
     public partial class FrmStockDetail : FrmBase
     {
         private string _stockCode = string.Empty;
+
+        private IExportHelper _exportHelper = new ExportHelper();
 
         public FrmStockDetail()
         {
@@ -91,7 +94,10 @@ namespace Quenya.View
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (string.IsNullOrEmpty(_stockCode) || _exportHelper == null)
+                return;
+
+            var result = _exportHelper.ExportToPdf(_database.GetStockOverviewByCode(_stockCode));
         }
 
         private void btnClose_Click(object sender, EventArgs e)

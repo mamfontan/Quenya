@@ -363,7 +363,9 @@ namespace Quenya.View
                         Cursor = Cursors.Default;
                         ShowMessageToUser(result);
                     }
-                    else
+
+                    // Si estamos viendo los valores de 5 minutos hora, es necesario refrescar la pantalla
+                    if ((int)cmbTimeRange.SelectedValue == 2)
                         UpdateSelectedDataAndChart();
                 }
             }
@@ -394,7 +396,9 @@ namespace Quenya.View
                         Cursor = Cursors.Default;
                         ShowMessageToUser(result);
                     }
-                    else
+
+                    // Si estamos viendo los valores de 5 minutos hora, es necesario refrescar la pantalla
+                    if ((int)cmbTimeRange.SelectedValue == 2)
                         UpdateSelectedDataAndChart();
                 }
             }
@@ -425,7 +429,9 @@ namespace Quenya.View
                         Cursor = Cursors.Default;
                         ShowMessageToUser(result);
                     }
-                    else
+
+                    // Si estamos viendo los valores de 15 minutos hora, es necesario refrescar la pantalla
+                    if ((int)cmbTimeRange.SelectedValue == 3)
                         UpdateSelectedDataAndChart();
                 }
             }
@@ -456,7 +462,9 @@ namespace Quenya.View
                         Cursor = Cursors.Default;
                         ShowMessageToUser(result);
                     }
-                    else
+
+                    // Si estamos viendo los valores de 1 hora, es necesario refrescar la pantalla
+                    if ((int)cmbTimeRange.SelectedValue == 4)
                         UpdateSelectedDataAndChart();
                 }
             }
@@ -487,7 +495,9 @@ namespace Quenya.View
                         Cursor = Cursors.Default;
                         ShowMessageToUser(result);
                     }
-                    else
+
+                    // Si estamos viendo los valores diarios, es necesario refrescar la pantalla
+                    if ((int)cmbTimeRange.SelectedValue == 0)
                         UpdateSelectedDataAndChart();
                 }
             }

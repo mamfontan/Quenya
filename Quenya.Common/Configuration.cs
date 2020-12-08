@@ -15,5 +15,7 @@ namespace Quenya.Common
         public string DbUser { get; set; }
 
         public string DbPassword { get; set; }
+
+        public string ExportFolder { get; set; }
     }
 }

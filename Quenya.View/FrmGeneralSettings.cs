@@ -1,6 +1,7 @@
 ﻿using Quenya.Common.interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Quenya.View
@@ -23,7 +24,7 @@ namespace Quenya.View
 
         private void FrmGeneralSettings_Load(object sender, EventArgs e)
         {
-            HookButtonEvents(new List<Control>() { btnCancel, btnSave });
+            HookButtonEvents(new List<Control>() { btnExportFolder, btnCancel, btnSave });
 
             CreateAndLoadList();
             ShowGeneralSettingsData();
@@ -47,6 +48,16 @@ namespace Quenya.View
                 return;
 
             cmbLanguageList.SelectedValue = (int)_config.Language;
+            txtExportFolder.Text = _config.ExportFolder;
+        }
+
+        private void btnExportFolder_Click(object sender, EventArgs e)
+        {
+            using var fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                txtExportFolder.Text = fbd.SelectedPath;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -58,12 +69,23 @@ namespace Quenya.View
         private void btnSave_Click(object sender, EventArgs e)
         {
             var selectedLanguage = (LANGUAGE)cmbLanguageList.SelectedValue;
+            var selectedExportFolder = txtExportFolder.Text.Trim();
+            var needToSave = false;
 
             if (_config.Language != selectedLanguage)
             {
+                needToSave = true;
                 _config.Language = selectedLanguage;
-                _config.Save();
             }
+
+            if (!string.Equals(_config.ExportFolder, selectedExportFolder))
+            {
+                needToSave = true;
+                _config.ExportFolder = selectedExportFolder;
+            }
+
+            if (needToSave)
+                _config.Save();
 
             DialogResult = DialogResult.OK;
             Close();
