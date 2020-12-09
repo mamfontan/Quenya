@@ -261,27 +261,27 @@ namespace Quenya.View
             switch (selectedTimeRange)
             {
                 case 0: // Daily values
-                    List<IStockPrice> dataDaily = _database.GetDailyRatePrices(selectedStockValueCode);
+                    List<IStockPrice> dataDaily = _database.GetDailyRatePrices(selectedStockValueCode, 90);
                     dgStockValueData.DataSource = dataDaily;
                     UpdateChart(dataDaily);
                     break;
                 case 1: // One minute rate
-                    List<IStockPrice> data01M = _database.GetOneMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data01M = _database.GetOneMinuteRatePrices(selectedStockValueCode, 8000);
                     dgStockValueData.DataSource = data01M;
                     UpdateChart(data01M);
                     break;
                 case 2: // Five minute rate
-                    List<IStockPrice> data05M = _database.GetFiveMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data05M = _database.GetFiveMinuteRatePrices(selectedStockValueCode, 450);
                     dgStockValueData.DataSource = data05M;
                     UpdateChart(data05M);
                     break;
                 case 3: // Fifteen minute rate
-                    List<IStockPrice> data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode, 672);
                     dgStockValueData.DataSource = data15M;
                     UpdateChart(data15M);
                     break;
                 case 4: // Sixty minute rate
-                    List<IStockPrice> data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode);
+                    List<IStockPrice> data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode, 168);
                     dgStockValueData.DataSource = data60M;
                     UpdateChart(data60M);
                     break;
@@ -294,7 +294,6 @@ namespace Quenya.View
 
             if (data != null && data.Any())
             {
-
                 CartesianChart chart = new CartesianChart();
 
                 ChartValues<double> max = new ChartValues<double>();
@@ -321,7 +320,7 @@ namespace Quenya.View
 
                 chart.AxisX.Add(new Axis
                 {
-                    Title = data[0].Code,
+                    //Title = data[0].Code,
                     Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
                 });
 

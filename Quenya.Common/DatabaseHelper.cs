@@ -135,13 +135,16 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<IStockPrice> GetDailyRatePrices(string stockCode)
+        public List<IStockPrice> GetDailyRatePrices(string stockCode, int? maxResults)
         {
             var result = new List<IStockPrice>();
 
             try
             {
-                result.AddRange(_stockContext.Dailys.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                if (maxResults == null)
+                    result.AddRange(_stockContext.Dailys.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                else
+                    result.AddRange(_stockContext.Dailys.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).Take((int)maxResults).ToList());
             }
             catch (Exception error)
             {
@@ -151,13 +154,16 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<IStockPrice> GetOneMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetOneMinuteRatePrices(string stockCode, int? maxResults)
         {
             var result = new List<IStockPrice>();
 
             try
             {
-                result.AddRange(_stockContext.OneMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                if (maxResults == null)
+                    result.AddRange(_stockContext.OneMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                else
+                    result.AddRange(_stockContext.OneMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).Take((int)maxResults).ToList());
             }
             catch (Exception error)
             {
@@ -167,13 +173,16 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<IStockPrice> GetFiveMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetFiveMinuteRatePrices(string stockCode, int? maxResults)
         {
             var result = new List<IStockPrice>();
 
             try
             {
-                result.AddRange(_stockContext.FiveMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                if (maxResults == null)
+                    result.AddRange(_stockContext.FiveMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                else
+                    result.AddRange(_stockContext.FiveMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).Take((int)maxResults).ToList());
             }
             catch (Exception error)
             {
@@ -183,13 +192,16 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<IStockPrice> GetFifteenMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetFifteenMinuteRatePrices(string stockCode, int? maxResults)
         {
             var result = new List<IStockPrice>();
 
             try
             {
-                result.AddRange(_stockContext.FifteenMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                if (maxResults == null)
+                    result.AddRange(_stockContext.FifteenMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                else
+                    result.AddRange(_stockContext.FifteenMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).Take((int)maxResults).ToList());
             }
             catch (Exception error)
             {
@@ -199,13 +211,16 @@ namespace Quenya.Common
             return result;
         }
 
-        public List<IStockPrice> GetSixtyMinuteRatePrices(string stockCode)
+        public List<IStockPrice> GetSixtyMinuteRatePrices(string stockCode, int? maxResults)
         {
             var result = new List<IStockPrice>();
 
             try
             {
-                result.AddRange(_stockContext.SixtyMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                if (maxResults == null)
+                    result.AddRange(_stockContext.SixtyMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).ToList());
+                else
+                    result.AddRange(_stockContext.SixtyMinuteValues.Where(x => string.Equals(x.Code, stockCode)).OrderByDescending(x => x.Date).Take((int)maxResults).ToList());
             }
             catch (Exception error)
             {

@@ -26,15 +26,15 @@ namespace Quenya.Common.interfaces
 
         StatusMessage DeleteStockValue(string stockCode);
 
-        List<IStockPrice> GetDailyRatePrices(string selectedStockValueCode);
+        List<IStockPrice> GetDailyRatePrices(string stockCode, int? maxResults);
 
-        List<IStockPrice> GetOneMinuteRatePrices(string selectedStockValueCode);
+        List<IStockPrice> GetOneMinuteRatePrices(string selectedStockValueCode, int? maxResults);
 
-        List<IStockPrice> GetFiveMinuteRatePrices(string selectedStockValueCode);
+        List<IStockPrice> GetFiveMinuteRatePrices(string selectedStockValueCode, int? maxResults);
 
-        List<IStockPrice> GetFifteenMinuteRatePrices(string selectedStockValueCode);
+        List<IStockPrice> GetFifteenMinuteRatePrices(string selectedStockValueCode, int? maxResults);
 
-        List<IStockPrice> GetSixtyMinuteRatePrices(string selectedStockValueCode);
+        List<IStockPrice> GetSixtyMinuteRatePrices(string selectedStockValueCode, int? maxResults);
 
         StatusMessage InsertDailyRatePrices(List<StockPriceDaily> data);
 
