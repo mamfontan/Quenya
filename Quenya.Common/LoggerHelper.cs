@@ -4,17 +4,17 @@ using System.IO;
 
 namespace Quenya.Common
 {
-    public class LoggerHelper : ILoggerHelper
+    public static class LoggerHelper
     {
-        private const string LOG_FILE_NAME = "queya.log";
+        private const string LOG_FILE_NAME = "quenya.log";
 
-        public LoggerHelper()
+        static LoggerHelper()
         {
             if (!CheckLogFile())
                 CreateLogFile();
         }
 
-        private bool CheckLogFile()
+        private static bool CheckLogFile()
         {
             bool result;
 
@@ -30,7 +30,7 @@ namespace Quenya.Common
             return result;
         }
 
-        private bool CreateLogFile()
+        private static bool CreateLogFile()
         {
             bool result = true;
 
@@ -47,14 +47,41 @@ namespace Quenya.Common
             return result;
         }
 
-        public void LogException(Exception error)
+        public static void LogException(bool writeTimeStamp, Exception error)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (StreamWriter sw = File.AppendText(LOG_FILE_NAME))
+                {
+                    if (writeTimeStamp)
+                        sw.WriteLine(">>> " + DateTime.Now.ToString("HH:mm:ss dd/MM/yyyy"));
+
+                    sw.WriteLine("   " + error.Message);
+                }
+
+                if  (error.InnerException != null)
+                    LogException(false, error.InnerException);
+            }
+            catch (Exception erro)
+            {
+                // ignored
+                Console.WriteLine(erro.Message);
+            }
         }
 
-        public void LogMessage(string msg)
+        public static void LogMessage(string msg)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (StreamWriter sw = File.AppendText(LOG_FILE_NAME))
+                {
+                    sw.WriteLine(msg);
+                }
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

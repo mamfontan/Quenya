@@ -14,7 +14,6 @@ namespace Quenya.View
         [STAThread]
         static void Main()
         {
-            ILoggerHelper _logger = new LoggerHelper();
             ITinyMessengerHub _bus = new TinyMessengerHub();
             IConfigurationHelper _config = new ConfigurationHelper();
             IDatabaseHelper _database = new DatabaseHelper(_config.DbHost, _config.DbPort, _config.DbName, _config.DbUser, _config.DbPassword);
@@ -23,7 +22,7 @@ namespace Quenya.View
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain(_config, _database, _api, _logger, _bus));
+            Application.Run(new FrmMain(_config, _database, _api, _bus));
         }
     }
 }

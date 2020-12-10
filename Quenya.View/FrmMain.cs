@@ -27,7 +27,7 @@ namespace Quenya.View
             InitializeComponent();
         }
 
-        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api, ILoggerHelper log, ITinyMessengerHub bus)
+        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api, ITinyMessengerHub bus)
         {
             InitializeComponent();
 
@@ -35,7 +35,6 @@ namespace Quenya.View
             _database = database;
             _api = api;
             _bus = bus;
-            _log = log;
         }
 
         private void FrmMain_Load(object sender, EventArgs e)

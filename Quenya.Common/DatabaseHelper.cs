@@ -1,9 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using Quenya.Common.interfaces;
+using Quenya.Common.messages;
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TinyMessenger;
 
 namespace Quenya.Common
 {
@@ -94,8 +96,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log the error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -111,8 +112,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log the error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -128,8 +128,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log the error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -148,7 +147,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -167,7 +166,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -186,7 +185,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -205,7 +204,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -224,7 +223,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -248,6 +247,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -273,6 +273,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -295,6 +296,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -317,6 +319,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -339,6 +342,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -361,6 +365,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -383,6 +388,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
@@ -433,6 +439,7 @@ namespace Quenya.Common
                 }
                 catch (Exception error)
                 {
+                    LoggerHelper.LogException(true, error);
                     result = GetErrorMessage(error);
                 }
             }
