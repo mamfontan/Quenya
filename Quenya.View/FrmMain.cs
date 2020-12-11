@@ -5,6 +5,7 @@ using Quenya.Common.messages;
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using TinyMessenger;
@@ -46,7 +47,7 @@ namespace Quenya.View
             CreateBasicObjects();
 
             CreateStockValuesTree();
-            CreateBasicChart();
+            CreateNoDataChart();
 
             SubscribeToEvents();
         }
@@ -175,35 +176,14 @@ namespace Quenya.View
             treeStockValue.ExpandAll();
         }
 
-        private void CreateBasicChart()
+        private void CreateNoDataChart()
         {
-            CartesianChart chart = new CartesianChart();
-
-            chart.Series = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title = "Series 1",
-                    Values = new ChartValues<double> {4, 6, 5, 2, 7}
-                }
-            };
-
-            chart.AxisX.Add(new Axis
-            {
-                Title = "Month",
-                Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
-            });
-
-            chart.AxisY.Add(new Axis
-            {
-                Title = "Sales",
-                LabelFormatter = value => value.ToString("C")
-            });
-
-            chart.LegendLocation = LegendLocation.Right;
-
-            splitContainer.Panel2.Controls.Add(chart);
-            chart.Dock = DockStyle.Fill;
+            Label noDataSelected = new Label();
+            noDataSelected.Text = "No stock value selected";
+            noDataSelected.Font = new Font("Arial", 36, FontStyle.Bold);
+            noDataSelected.TextAlign = ContentAlignment.MiddleCenter;
+            splitContainer.Panel2.Controls.Add(noDataSelected);
+            noDataSelected.Dock = DockStyle.Fill;
         }
 
         private void btnGeneralSettings_Click(object sender, EventArgs e)
