@@ -320,6 +320,9 @@ namespace Quenya.View
         #region Menu Events
         private void menuUpdate01M_Click(object sender, EventArgs e)
         {
+            // HACK Funcionalidad abandonada temporalmente
+            return;
+
             if (_api == null || _database == null || treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
                 return;
 
