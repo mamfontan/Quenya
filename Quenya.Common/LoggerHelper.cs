@@ -1,5 +1,4 @@
-﻿using Quenya.Common.interfaces;
-using System;
+﻿using System;
 using System.IO;
 
 namespace Quenya.Common

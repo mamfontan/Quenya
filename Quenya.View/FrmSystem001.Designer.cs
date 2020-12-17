@@ -29,7 +29,6 @@ namespace Quenya.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSystem001));
             this.lblSystemTitle001 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
@@ -38,12 +37,12 @@ namespace Quenya.View
             this.gbSystemSettings = new System.Windows.Forms.GroupBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lblNumDays = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbSystemLog = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.gbSystemInfo.SuspendLayout();
             this.gbSystemSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbSystemLog.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSystemTitle001
@@ -63,7 +62,7 @@ namespace Quenya.View
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(643, 442);
+            this.btnClose.Location = new System.Drawing.Point(643, 399);
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(82, 22);
@@ -75,13 +74,13 @@ namespace Quenya.View
             // btnPlay
             // 
             this.btnPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPlay.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPlay.BackgroundImage")));
             this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPlay.Location = new System.Drawing.Point(12, 400);
+            this.btnPlay.Location = new System.Drawing.Point(12, 399);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(126, 64);
+            this.btnPlay.Size = new System.Drawing.Size(82, 22);
             this.btnPlay.TabIndex = 2;
+            this.btnPlay.Text = "GO";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
@@ -132,17 +131,17 @@ namespace Quenya.View
             this.lblNumDays.TabIndex = 0;
             this.lblNumDays.Text = "Num. days:";
             // 
-            // groupBox1
+            // gbSystemLog
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbSystemLog.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.richTextBox2);
-            this.groupBox1.Location = new System.Drawing.Point(344, 66);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(381, 326);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = " Description  ";
+            this.gbSystemLog.Controls.Add(this.richTextBox2);
+            this.gbSystemLog.Location = new System.Drawing.Point(344, 66);
+            this.gbSystemLog.Name = "gbSystemLog";
+            this.gbSystemLog.Size = new System.Drawing.Size(381, 326);
+            this.gbSystemLog.TabIndex = 5;
+            this.gbSystemLog.TabStop = false;
+            this.gbSystemLog.Text = " Log  ";
             // 
             // richTextBox2
             // 
@@ -160,8 +159,8 @@ namespace Quenya.View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 475);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(737, 432);
+            this.Controls.Add(this.gbSystemLog);
             this.Controls.Add(this.gbSystemSettings);
             this.Controls.Add(this.gbSystemInfo);
             this.Controls.Add(this.btnPlay);
@@ -169,13 +168,13 @@ namespace Quenya.View
             this.Controls.Add(this.lblSystemTitle001);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmSystem001";
-            this.Text = "FrmSystem001";
+            this.Text = "System 001";
             this.Load += new System.EventHandler(this.FrmSystem001_Load);
             this.gbSystemInfo.ResumeLayout(false);
             this.gbSystemSettings.ResumeLayout(false);
             this.gbSystemSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.gbSystemLog.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -190,7 +189,7 @@ namespace Quenya.View
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label lblNumDays;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbSystemLog;
         private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
