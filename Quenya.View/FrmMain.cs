@@ -1,4 +1,5 @@
 ﻿using LiveCharts;
+using LiveCharts.Configurations;
 using LiveCharts.Wpf;
 using Quenya.Common.interfaces;
 using Quenya.Common.messages;
@@ -242,7 +243,7 @@ namespace Quenya.View
                 case 0: // Daily values
                     List<IStockPrice> dataDaily = _database.GetDailyRatePrices(selectedStockValueCode, 90);
                     dgStockValueData.DataSource = dataDaily;
-                    UpdateChart(dataDaily);
+                    UpdateDailyChart(dataDaily);
                     break;
                 case 1: // One minute rate
                     List<IStockPrice> data01M = _database.GetOneMinuteRatePrices(selectedStockValueCode, 8000);
@@ -273,48 +274,104 @@ namespace Quenya.View
 
             if (data != null && data.Any())
             {
+
+                var dayConfig = Mappers.Xy<ChartModel>()
+                       .X(dayModel => (double)dayModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
+                       .Y(dayModel => dayModel.Value);
+
                 CartesianChart chart = new CartesianChart();
 
-                ChartValues<double> max = new ChartValues<double>();
-                ChartValues<double> min = new ChartValues<double>();
+                ChartValues<ChartModel> max2 = new ChartValues<ChartModel>();
+                ChartValues<ChartModel> min2 = new ChartValues<ChartModel>();
                 foreach (var item in data)
                 {
-                    max.Add(item.Max);
-                    min.Add(item.Min);
+                    max2.Add(new ChartModel(item.Date, item.Max));
+                    min2.Add(new ChartModel(item.Date, item.Min));
                 }
 
-                chart.Series = new SeriesCollection
+                chart.Series = new SeriesCollection(dayConfig)
                 {
                     new LineSeries
                     {
                         Title = "Max",
-                        Values = max,
+                        Values = max2,
                     },
                     new LineSeries
                     {
                         Title = "Min",
-                        Values = min,
+                        Values = min2,
                     },
                 };
 
                 chart.AxisX.Add(new Axis
                 {
-                    //Title = data[0].Code,
-                    Labels = new[] { "Jan", "Feb", "Mar", "Apr", "May" }
-                });
-
-                chart.AxisY.Add(new Axis
-                {
-                    Title = "Values",
-                    LabelFormatter = value => value.ToString("C")
+                    LabelFormatter = DateLabelFormater,
                 });
 
                 chart.LegendLocation = LegendLocation.Right;
 
-                
                 splitContainer.Panel2.Controls.Add(chart);
                 chart.Dock = DockStyle.Fill;
             }
+        }
+
+        private void UpdateDailyChart(List<IStockPrice> data)
+        {
+            splitContainer.Panel2.Controls.Clear();
+
+            if (data != null && data.Any())
+            {
+
+                var dayConfig = Mappers.Xy<ChartModel>()
+                       .X(dayModel => (double)dayModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
+                       .Y(dayModel => dayModel.Value);
+
+                CartesianChart chart = new CartesianChart();
+
+                ChartValues<ChartModel> max2 = new ChartValues<ChartModel>();
+                ChartValues<ChartModel> min2 = new ChartValues<ChartModel>();
+                foreach (var item in data)
+                {
+                    max2.Add(new ChartModel(item.Date, item.Max));
+                    min2.Add(new ChartModel(item.Date, item.Min));
+                }
+
+                chart.Series = new SeriesCollection(dayConfig)
+                {
+                    new LineSeries
+                    {
+                        Title = "Max",
+                        Values = max2,
+                    },
+                    new LineSeries
+                    {
+                        Title = "Min",
+                        Values = min2,
+                    },
+                };
+
+                chart.AxisX.Add(new Axis
+                {
+                    LabelFormatter = DateLabelFormaterDaily,
+                });
+
+                chart.LegendLocation = LegendLocation.Right;
+
+                splitContainer.Panel2.Controls.Add(chart);
+                chart.Dock = DockStyle.Fill;
+            }
+        }
+
+        private string DateLabelFormaterDaily(double value)
+        {
+            DateTime dateTime = new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks));
+            return dateTime.ToString("dd/MM/yy");
+        }
+
+        private string DateLabelFormater(double value)
+        {
+            DateTime dateTime = new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks));
+            return dateTime.ToString("dd/MM HH:mm:ss");
         }
 
         #region Menu Events
