@@ -53,6 +53,24 @@ namespace Quenya.Common
             set { _config.ExportFolder = value; }
         }
 
+        public string EmailSmtpServer
+        {
+            get { return _config.EmailSmtpServer; }
+            set { _config.EmailSmtpServer = value; }
+        }
+
+        public string EmailUsername
+        {
+            get { return _config.EmailUsername; }
+            set { _config.EmailUsername = value; }
+        }
+
+        public string EmailPassword
+        {
+            get { return _config.EmailPassword; }
+            set { _config.EmailPassword = value; }
+        }
+
         public ConfigurationHelper()
         {
             if (!CheckConfigFile())

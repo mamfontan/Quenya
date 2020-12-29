@@ -15,6 +15,8 @@ namespace Quenya.View
 
         internal IApiHelper _api;
 
+        internal IEmailHelper _email;
+
         internal ITinyMessengerHub _bus;
 
         internal ILoggerHelper _log;

@@ -21,7 +21,12 @@ namespace Quenya.View
 
         private void FrmCommSettings_Load(object sender, EventArgs e)
         {
-            HookButtonEvents(new List<Control>() { btnCancel, btnSave });
+            HookButtonEvents(new List<Control>() { btnCancel, btnSave, btnTestEmail });
+        }
+
+        private void btnTestEmail_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

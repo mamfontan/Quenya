@@ -17,5 +17,11 @@ namespace Quenya.Common
         public string DbPassword { get; set; }
 
         public string ExportFolder { get; set; }
+
+        public string EmailSmtpServer { get; set; }
+
+        public string EmailUsername { get; set; }
+
+        public string EmailPassword { get; set; }
     }
 }

@@ -29,13 +29,14 @@ namespace Quenya.View
             InitializeComponent();
         }
 
-        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api, ITinyMessengerHub bus)
+        public FrmMain(IConfigurationHelper config, IDatabaseHelper database, IApiHelper api, IEmailHelper email, ITinyMessengerHub bus)
         {
             InitializeComponent();
 
             _config = config;
             _database = database;
             _api = api;
+            _email = email;
             _bus = bus;
         }
 
@@ -256,12 +257,12 @@ namespace Quenya.View
                     UpdateChart(data05M);
                     break;
                 case 3: // Fifteen minute rate
-                    List<IStockPrice> data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode, 672);
+                    List<IStockPrice> data15M = _database.GetFifteenMinuteRatePrices(selectedStockValueCode, 278);
                     dgStockValueData.DataSource = data15M;
                     UpdateChart(data15M);
                     break;
                 case 4: // Sixty minute rate
-                    List<IStockPrice> data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode, 168);
+                    List<IStockPrice> data60M = _database.GetSixtyMinuteRatePrices(selectedStockValueCode, 72);
                     dgStockValueData.DataSource = data60M;
                     UpdateChart(data60M);
                     break;
@@ -312,6 +313,8 @@ namespace Quenya.View
 
                 splitContainer.Panel2.Controls.Add(chart);
                 chart.Dock = DockStyle.Fill;
+                //chart.Zoom = ZoomingOptions.Xy;
+                //chart.Pan = PanningOptions.Xy;
             }
         }
 

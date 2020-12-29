@@ -18,6 +18,12 @@
 
         string ExportFolder { get; set; }
 
+        string EmailSmtpServer { get; set; }
+
+        string EmailUsername { get; set; }
+
+        string EmailPassword { get; set; }
+
         void Save();
     }
 }
