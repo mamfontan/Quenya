@@ -267,6 +267,14 @@ namespace Quenya.View
                     UpdateChart(data60M);
                     break;
             }
+
+            ConfigureGridColumns();
+        }
+
+        private void ConfigureGridColumns()
+        {
+            for (int x = 2; x <= 5; x++)
+                dgStockValueData.Columns[x].DefaultCellStyle.Format = "N4";
         }
 
         private void UpdateChart(List<IStockPrice> data)
