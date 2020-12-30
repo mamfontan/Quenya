@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Quenya.Domain;
 
 namespace Quenya.Common.interfaces
 {
     public interface IEmailHelper
     {
-        bool SendMessaqe(string subject, string body, string toAddress);
+        StatusMessage SendMessaqe(string subject, string body, string toAddress);
 
     }
 }

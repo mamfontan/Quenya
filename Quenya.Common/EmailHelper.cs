@@ -1,4 +1,5 @@
 ﻿using Quenya.Common.interfaces;
+using Quenya.Domain;
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
@@ -19,8 +20,10 @@ namespace Quenya.Common
             _password = password;
         }
 
-        public bool SendMessaqe(string subject, string body, string toAddress)
+        public StatusMessage SendMessaqe(string subject, string body, string toAddress)
         {
+            var result = new StatusMessage();
+
             try
             {
                 MailMessage mail = new MailMessage();
@@ -36,13 +39,15 @@ namespace Quenya.Common
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
+
+                result = new StatusMessage(MSG_TYPE.SUCCESS, "Correo enviado correctamente");
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                return false;
+                result = new StatusMessage(MSG_TYPE.ERROR, "No se puede acceder al servidor" + Environment.NewLine + error.Message);
             }
 
-            return true;
+            return result;
         }
     }
 }
