@@ -275,6 +275,19 @@ namespace Quenya.View
         {
             for (int x = 2; x <= 5; x++)
                 dgStockValueData.Columns[x].DefaultCellStyle.Format = "N4";
+
+            dgStockValueData.RowPrePaint += dgEvents_RowPrePaint;
+        }
+
+        private void dgEvents_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            double open = Convert.ToDouble(dgStockValueData.Rows[e.RowIndex].Cells[4].Value);
+            double close = Convert.ToDouble(dgStockValueData.Rows[e.RowIndex].Cells[5].Value);
+
+            Color color = (open > close) ? Color.Red :
+                (close > open) ? Color.Green : Color.Black;
+
+            dgStockValueData.Rows[e.RowIndex].Cells[7].Style.ForeColor = color;
         }
 
         private void UpdateChart(List<IStockPrice> data)
