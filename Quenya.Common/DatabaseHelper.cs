@@ -78,10 +78,19 @@ namespace Quenya.Common
             var strCnn = "Server = " + host + "; Port = " + port + "; Database = " + schema + "; Uid = " + user + "; Pwd = " + password + ";";
             var newContext = new StockContext(strCnn);
 
-            if (newContext.Database.CompatibleWithModel(false))
-                return new StatusMessage(MSG_TYPE.SUCCESS, "La versión de la base de datos es correcta");
+            StatusMessage result = null;
 
-            return new StatusMessage(MSG_TYPE.ERROR, "Versión de la base de datos incorrecta");
+            try
+            {
+                if (newContext.Database.CompatibleWithModel(false))
+                    result = new StatusMessage(MSG_TYPE.SUCCESS, "La versión de la base de datos es correcta");
+            }
+            catch(Exception error)
+            {
+                result = new StatusMessage(MSG_TYPE.ERROR, "Versión de la base de datos incorrecta" + Environment.NewLine + error.Message);
+            }
+
+            return result;
         }
 
         public List<StockValue> GetStockValueList()

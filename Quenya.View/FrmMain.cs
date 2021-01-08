@@ -1,6 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
+using Quenya.Common;
 using Quenya.Common.interfaces;
 using Quenya.Common.messages;
 using Quenya.Domain;
@@ -101,7 +102,7 @@ namespace Quenya.View
                 var newStockValue = form.SelectedStockValue;
                 var result = _database.InsertStockValue(newStockValue);
 
-                if (result.MsgType == Domain.MSG_TYPE.SUCCESS)
+                if (result.MsgType == MSG_TYPE.SUCCESS)
                 {
                     var overview = _api.SearchStockOverview(newStockValue.Code);
                     if (overview != null)
@@ -129,7 +130,7 @@ namespace Quenya.View
 
             var selectedStockCode = treeStockValue.SelectedNode.Tag.ToString();
             var result = _database.DeleteStockValue(selectedStockCode);
-            if (result.MsgType == Domain.MSG_TYPE.SUCCESS)
+            if (result.MsgType == MSG_TYPE.SUCCESS)
                 CreateStockValuesTree();
             else
                 ShowMessageToUser(result);
@@ -354,10 +355,13 @@ namespace Quenya.View
 
                 ChartValues<ChartModel> max2 = new ChartValues<ChartModel>();
                 ChartValues<ChartModel> min2 = new ChartValues<ChartModel>();
+                ChartValues<ChartModel> vol = new ChartValues<ChartModel>();
+
                 foreach (var item in data)
                 {
                     max2.Add(new ChartModel(item.Date, item.Max));
                     min2.Add(new ChartModel(item.Date, item.Min));
+                    vol.Add(new ChartModel(item.Date, item.Volume));
                 }
 
                 chart.Series = new SeriesCollection(dayConfig)
@@ -372,6 +376,11 @@ namespace Quenya.View
                         Title = "Min",
                         Values = min2,
                     },
+                    //new ColumnSeries
+                    //{
+                    //    Title = "Volume",
+                    //    Values = vol,
+                    //}
                 };
 
                 chart.AxisX.Add(new Axis

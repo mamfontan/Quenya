@@ -1,4 +1,4 @@
-﻿namespace Quenya.Domain
+﻿namespace Quenya.Common
 {
     public enum MSG_TYPE { INFORMATION, SUCCESS, WARNING, ERROR }
 
