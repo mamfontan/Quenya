@@ -385,7 +385,12 @@ namespace Quenya.View
 
                 chart.AxisX.Add(new Axis
                 {
-                    LabelFormatter = DateLabelFormaterDaily,
+                    LabelFormatter = DateLabelFormaterDailyX,
+                });
+
+                chart.AxisY.Add(new Axis
+                {
+                    LabelFormatter = DateLabelFormaterDailyY,
                 });
 
                 chart.LegendLocation = LegendLocation.Right;
@@ -395,10 +400,15 @@ namespace Quenya.View
             }
         }
 
-        private string DateLabelFormaterDaily(double value)
+        private string DateLabelFormaterDailyX(double value)
         {
             DateTime dateTime = new DateTime((long)(value * TimeSpan.FromSeconds(1).Ticks));
             return dateTime.ToString("dd/MM/yy");
+        }
+
+        private string DateLabelFormaterDailyY(double value)
+        {
+            return value.ToString("0.000");
         }
 
         private string DateLabelFormater(double value)
