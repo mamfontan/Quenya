@@ -128,8 +128,13 @@ namespace Quenya.View
             if (treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
                 return;
 
+            Cursor = Cursors.WaitCursor;
+
             var selectedStockCode = treeStockValue.SelectedNode.Tag.ToString();
             var result = _database.DeleteStockValue(selectedStockCode);
+
+            Cursor = Cursors.Default;
+
             if (result.MsgType == MSG_TYPE.SUCCESS)
                 CreateStockValuesTree();
             else
@@ -355,26 +360,34 @@ namespace Quenya.View
 
                 ChartValues<ChartModel> max2 = new ChartValues<ChartModel>();
                 ChartValues<ChartModel> min2 = new ChartValues<ChartModel>();
+                ChartValues<ChartModel> average = new ChartValues<ChartModel>();
+
                 ChartValues<ChartModel> vol = new ChartValues<ChartModel>();
 
                 foreach (var item in data)
                 {
-                    max2.Add(new ChartModel(item.Date, item.Max));
-                    min2.Add(new ChartModel(item.Date, item.Min));
+                    //max2.Add(new ChartModel(item.Date, item.Max));
+                    //min2.Add(new ChartModel(item.Date, item.Min));
+                    average.Add(new ChartModel(item.Date, (item.Max - item.Min) / 2));
                     vol.Add(new ChartModel(item.Date, item.Volume));
                 }
 
                 chart.Series = new SeriesCollection(dayConfig)
                 {
+                    //new LineSeries
+                    //{
+                    //    Title = "Max",
+                    //    Values = max2,
+                    //},
+                    //new LineSeries
+                    //{
+                    //    Title = "Min",
+                    //    Values = min2,
+                    //},
                     new LineSeries
                     {
-                        Title = "Max",
-                        Values = max2,
-                    },
-                    new LineSeries
-                    {
-                        Title = "Min",
-                        Values = min2,
+                        Title = "Value",
+                        Values = average,
                     },
                     //new ColumnSeries
                     //{

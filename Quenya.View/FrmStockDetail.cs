@@ -1,9 +1,10 @@
-﻿using Quenya.Common;
-using Quenya.Common.interfaces;
-using Quenya.Domain;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+using Quenya.Common;
+using Quenya.Domain;
+using Quenya.Common.interfaces;
 
 namespace Quenya.View
 {
@@ -11,7 +12,7 @@ namespace Quenya.View
     {
         private string _stockCode = string.Empty;
 
-        private IExportHelper _exportHelper = new ExportHelper();
+        private IExportHelper _exportHelper = null;
 
         public FrmStockDetail()
         {
@@ -27,6 +28,8 @@ namespace Quenya.View
             _config = config;
             _database = database;
             _api = api;
+
+            _exportHelper = new ExportHelper(_config.ExportFolder);
         }
 
         private void FrmStockDetail_Load(object sender, EventArgs e)
@@ -97,7 +100,13 @@ namespace Quenya.View
             if (string.IsNullOrEmpty(_stockCode) || _exportHelper == null)
                 return;
 
+            Cursor = Cursors.WaitCursor;
+
             var result = _exportHelper.ExportToPdf(_database.GetStockOverviewByCode(_stockCode));
+
+            Cursor = Cursors.Default;
+
+            ShowMessageToUser(result);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
