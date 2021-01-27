@@ -55,6 +55,13 @@ namespace Quenya.View
             SubscribeToEvents();
         }
 
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("¿Seguro que deseas salir del programa?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                e.Cancel = true;
+        }
+
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             UnSubscribeToEvents();
@@ -620,5 +627,7 @@ namespace Quenya.View
             }
         }
         #endregion
+
+        
     }
 }
