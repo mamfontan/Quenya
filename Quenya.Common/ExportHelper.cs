@@ -20,7 +20,7 @@ namespace Quenya.Common
 
         public StatusMessage ExportToPdf(Overview data)
         {
-            var result = new StatusMessage();
+            StatusMessage result;
 
             if (data == null)
                 return new StatusMessage(MSG_TYPE.WARNING, "El parámetro no puede ser nulo (ExportToPdf)");
