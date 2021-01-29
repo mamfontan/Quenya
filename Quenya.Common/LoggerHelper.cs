@@ -39,7 +39,6 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
                 result = false;
             }
 
@@ -72,10 +71,8 @@ namespace Quenya.Common
         {
             try
             {
-                using (StreamWriter sw = File.AppendText(LOG_FILE_NAME))
-                {
-                    sw.WriteLine(msg);
-                }
+                using StreamWriter sw = File.AppendText(LOG_FILE_NAME);
+                sw.WriteLine(msg);
             }
             catch (Exception)
             {

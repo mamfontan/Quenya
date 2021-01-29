@@ -16,6 +16,8 @@ namespace Quenya.Common
 {
     public class ApiHelper : IApiHelper
     {
+        private ILoggerHelper _logger;
+
         private ITinyMessengerHub _bus;
 
         private const string LIMIT_REACHED = "Thank you for using Alpha Vantage!";
@@ -261,9 +263,9 @@ namespace Quenya.Common
                 result = responseReader.ReadToEnd();
                 responseReader.Close();
             }
-            catch (Exception e)
+            catch (Exception error)
             {
-                // TODO Logguear el error
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -311,8 +313,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -328,8 +329,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -402,8 +402,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;
@@ -468,8 +467,7 @@ namespace Quenya.Common
             }
             catch (Exception error)
             {
-                // TODO Log error
-                Console.WriteLine(error.Message);
+                LoggerHelper.LogException(true, error);
             }
 
             return result;

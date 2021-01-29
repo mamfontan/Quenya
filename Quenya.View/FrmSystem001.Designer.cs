@@ -169,6 +169,7 @@ namespace Quenya.View
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmSystem001";
             this.Text = "System 001";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSystem001_FormClosed);
             this.Load += new System.EventHandler(this.FrmSystem001_Load);
             this.gbSystemInfo.ResumeLayout(false);
             this.gbSystemSettings.ResumeLayout(false);

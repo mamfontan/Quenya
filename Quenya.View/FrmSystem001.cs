@@ -48,5 +48,10 @@ namespace Quenya.View
         {
             Close();
         }
+
+        private void FrmSystem001_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
     }
 }

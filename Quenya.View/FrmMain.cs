@@ -164,8 +164,8 @@ namespace Quenya.View
             _systemsList = new List<KeyValuePair<int, string>>()
             {
                 new KeyValuePair<int, string>(0, "Three turtles"),
-                new KeyValuePair<int, string>(1, "Unknow method"),
-                new KeyValuePair<int, string>(2, "Unknow method"),
+                new KeyValuePair<int, string>(1, "System 002"),
+                new KeyValuePair<int, string>(2, "System 003"),
             };
 
             SetComboBox(cmbSystem, _systemsList, "Key", "Value");
@@ -286,6 +286,12 @@ namespace Quenya.View
 
         private void ConfigureGridColumns()
         {
+            // Modificamos la cabecera
+            var font = dgStockValueData.ColumnHeadersDefaultCellStyle.Font;
+            var fontBold = new Font(font.FontFamily, font.Size, FontStyle.Bold);
+            dgStockValueData.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
+
+            // Modificamos las celdas
             for (int x = 2; x <= 5; x++)
                 dgStockValueData.Columns[x].DefaultCellStyle.Format = "N4";
 
@@ -617,8 +623,16 @@ namespace Quenya.View
                 switch(selectedSystem)
                 {
                     case 0:
-                        var form = new FrmSystem001(_database, _bus);
-                        form.Show();
+                        var form01 = new FrmSystem001(_database, _bus);
+                        form01.Show();
+                        break;
+                    case 1:
+                        var form02 = new FrmSystem002(_database, _bus);
+                        form02.Show();
+                        break;
+                    case 2:
+                        var form03 = new FrmSystem003(_database, _bus);
+                        form03.Show();
                         break;
                     default:
                         MessageBox.Show("Not implemented", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);

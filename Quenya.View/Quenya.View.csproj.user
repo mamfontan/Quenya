@@ -25,5 +25,11 @@
     <Compile Update="FrmSystem001.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmSystem002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmSystem003.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
