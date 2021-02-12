@@ -71,6 +71,12 @@ namespace Quenya.Common
             set { _config.EmailPassword = value; }
         }
 
+        public bool ShowVolumeSeries
+        {
+            get { return _config.ShowVolumeSeries; }
+            set { _config.ShowVolumeSeries = value; }
+        }
+
         public ConfigurationHelper()
         {
             if (!CheckConfigFile())

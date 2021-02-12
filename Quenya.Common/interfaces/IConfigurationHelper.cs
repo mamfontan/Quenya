@@ -24,6 +24,8 @@
 
         string EmailPassword { get; set; }
 
+        bool ShowVolumeSeries { get; set; }
+
         void Save();
     }
 }

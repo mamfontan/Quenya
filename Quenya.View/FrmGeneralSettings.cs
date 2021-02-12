@@ -49,6 +49,7 @@ namespace Quenya.View
 
             cmbLanguageList.SelectedValue = (int)_config.Language;
             txtExportFolder.Text = _config.ExportFolder;
+            chkShowVolumeSeries.Checked = _config.ShowVolumeSeries;
         }
 
         private void btnExportFolder_Click(object sender, EventArgs e)
@@ -70,6 +71,7 @@ namespace Quenya.View
         {
             var selectedLanguage = (LANGUAGE)cmbLanguageList.SelectedValue;
             var selectedExportFolder = txtExportFolder.Text.Trim();
+            var selectedShowVolumeSeries = chkShowVolumeSeries.Checked;
             var needToSave = false;
 
             if (_config.Language != selectedLanguage)
@@ -82,6 +84,12 @@ namespace Quenya.View
             {
                 needToSave = true;
                 _config.ExportFolder = selectedExportFolder;
+            }
+
+            if (_config.ShowVolumeSeries != selectedShowVolumeSeries)
+            {
+                needToSave = true;
+                _config.ShowVolumeSeries = selectedShowVolumeSeries;
             }
 
             if (needToSave)

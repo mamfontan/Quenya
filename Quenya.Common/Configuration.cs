@@ -23,5 +23,7 @@ namespace Quenya.Common
         public string EmailUsername { get; set; }
 
         public string EmailPassword { get; set; }
+
+        public bool ShowVolumeSeries { get; set; }
     }
 }

@@ -76,6 +76,8 @@ namespace Quenya.View
             menuUpdate05M.Click += menuUpdate05M_Click;
             menuUpdate15M.Click += menuUpdate15M_Click;
             menuUpdate60M.Click += menuUpdate60M_Click;
+
+            menuShowHideVolume.Click += menuShowHideVolume_Click;
         }
 
         private void SubscribeToEvents()
@@ -385,6 +387,12 @@ namespace Quenya.View
                     vol.Add(new ChartModel(item.Date, item.Volume));
                 }
 
+                // TODO Volme series
+                if (_config.ShowVolumeSeries)
+                {
+
+                }
+
                 chart.Series = new SeriesCollection(dayConfig)
                 {
                     //new LineSeries
@@ -423,6 +431,8 @@ namespace Quenya.View
 
                 splitContainer.Panel2.Controls.Add(chart);
                 chart.Dock = DockStyle.Fill;
+
+                chart.ContextMenuStrip = chartContextMenu;
             }
         }
 
@@ -610,7 +620,13 @@ namespace Quenya.View
             }
 
             Cursor = Cursors.Default;
+        }
 
+        private void menuShowHideVolume_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            ShowMessageToUser(new StatusMessage(MSG_TYPE.INFORMATION, "NO IMPLEMENTADO TODAVIA"));
+            Cursor = Cursors.Default;
         }
         #endregion
 
@@ -640,8 +656,7 @@ namespace Quenya.View
                 }
             }
         }
-        #endregion
 
-        
+        #endregion
     }
 }
