@@ -29,6 +29,7 @@ namespace Quenya.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSystem001));
             this.lblSystemTitle001 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
@@ -167,6 +168,7 @@ namespace Quenya.View
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblSystemTitle001);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSystem001";
             this.Text = "System 001";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSystem001_FormClosed);

@@ -17,6 +17,8 @@ namespace Quenya.View
 {
     public partial class FrmMain : FrmBase
     {
+        private const string REQUEST_LIMIT = " / 5";
+
         private List<KeyValuePair<int, string>> _timeRangeList;
 
         private List<KeyValuePair<int, string>> _systemsList;
@@ -89,7 +91,7 @@ namespace Quenya.View
 
                 BeginInvoke((Action)(() => {
                     var apiUseLevel = m.Content;
-                    lblUsage.Text = apiUseLevel + " / 5";
+                    lblUsage.Text = apiUseLevel + REQUEST_LIMIT;
                 }));
             });
         }
@@ -168,6 +170,7 @@ namespace Quenya.View
                 new KeyValuePair<int, string>(0, "Three turtles"),
                 new KeyValuePair<int, string>(1, "System 002"),
                 new KeyValuePair<int, string>(2, "System 003"),
+                new KeyValuePair<int, string>(2, "System 004"),
             };
 
             SetComboBox(cmbSystem, _systemsList, "Key", "Value");

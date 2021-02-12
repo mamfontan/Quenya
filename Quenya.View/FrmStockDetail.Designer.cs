@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStockDetail));
             this.btnClose = new System.Windows.Forms.Button();
             this.gbStockValueInfo = new System.Windows.Forms.GroupBox();
             this.lblDescriptionValue = new System.Windows.Forms.Label();
@@ -274,6 +275,7 @@
             this.Controls.Add(this.gbStockValueInfo);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

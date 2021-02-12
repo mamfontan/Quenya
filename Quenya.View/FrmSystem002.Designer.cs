@@ -29,6 +29,7 @@ namespace Quenya.View
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSystem002));
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -63,6 +64,7 @@ namespace Quenya.View
             this.ClientSize = new System.Drawing.Size(477, 223);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.btnClose);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSystem002";
             this.Text = "System 002";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSystem002_FormClosed);
