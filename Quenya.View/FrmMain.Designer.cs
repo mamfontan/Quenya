@@ -42,7 +42,7 @@
             this.btnDeleteStockValue = new System.Windows.Forms.Button();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.dgStockValueData = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbStatusBar = new System.Windows.Forms.GroupBox();
             this.txtInfo = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCommSettings = new System.Windows.Forms.Button();
@@ -65,7 +65,7 @@
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStockValueData)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.gbStatusBar.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.chartContextMenu.SuspendLayout();
@@ -78,11 +78,11 @@
             this.gbStockValueList.Controls.Add(this.treeStockValue);
             this.gbStockValueList.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbStockValueList.ForeColor = System.Drawing.Color.Blue;
-            this.gbStockValueList.Location = new System.Drawing.Point(10, 10);
+            this.gbStockValueList.Location = new System.Drawing.Point(10, 11);
             this.gbStockValueList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbStockValueList.Name = "gbStockValueList";
             this.gbStockValueList.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbStockValueList.Size = new System.Drawing.Size(291, 406);
+            this.gbStockValueList.Size = new System.Drawing.Size(291, 553);
             this.gbStockValueList.TabIndex = 0;
             this.gbStockValueList.TabStop = false;
             this.gbStockValueList.Text = " Stock value list  ";
@@ -95,11 +95,11 @@
             this.treeStockValue.ContextMenuStrip = this.treeContextMenu;
             this.treeStockValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.treeStockValue.HideSelection = false;
-            this.treeStockValue.Location = new System.Drawing.Point(14, 25);
+            this.treeStockValue.Location = new System.Drawing.Point(14, 28);
             this.treeStockValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeStockValue.Name = "treeStockValue";
             this.treeStockValue.ShowNodeToolTips = true;
-            this.treeStockValue.Size = new System.Drawing.Size(262, 376);
+            this.treeStockValue.Size = new System.Drawing.Size(262, 519);
             this.treeStockValue.TabIndex = 0;
             this.treeStockValue.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeStockValue_AfterSelect);
             // 
@@ -155,10 +155,10 @@
             // 
             this.btnDeleteStockValue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDeleteStockValue.BackgroundImage")));
             this.btnDeleteStockValue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDeleteStockValue.Location = new System.Drawing.Point(265, 10);
+            this.btnDeleteStockValue.Location = new System.Drawing.Point(265, 11);
             this.btnDeleteStockValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteStockValue.Name = "btnDeleteStockValue";
-            this.btnDeleteStockValue.Size = new System.Drawing.Size(25, 22);
+            this.btnDeleteStockValue.Size = new System.Drawing.Size(25, 25);
             this.btnDeleteStockValue.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnDeleteStockValue, "Eliminar valor");
             this.toolTip_EN.SetToolTip(this.btnDeleteStockValue, "Delete stock");
@@ -171,7 +171,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitContainer.Location = new System.Drawing.Point(307, 64);
+            this.splitContainer.Location = new System.Drawing.Point(307, 73);
             this.splitContainer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer.Name = "splitContainer";
             this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -179,8 +179,8 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.Controls.Add(this.dgStockValueData);
-            this.splitContainer.Size = new System.Drawing.Size(621, 309);
-            this.splitContainer.SplitterDistance = 183;
+            this.splitContainer.Size = new System.Drawing.Size(621, 441);
+            this.splitContainer.SplitterDistance = 261;
             this.splitContainer.SplitterWidth = 3;
             this.splitContainer.TabIndex = 2;
             this.splitContainer.Text = "splitContainer1";
@@ -196,33 +196,33 @@
             this.dgStockValueData.Name = "dgStockValueData";
             this.dgStockValueData.RowHeadersWidth = 51;
             this.dgStockValueData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgStockValueData.Size = new System.Drawing.Size(617, 179);
+            this.dgStockValueData.Size = new System.Drawing.Size(617, 257);
             this.dgStockValueData.TabIndex = 0;
             this.dgStockValueData.Text = "dataGridView1";
             // 
-            // groupBox2
+            // gbStatusBar
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbStatusBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.txtInfo);
-            this.groupBox2.Location = new System.Drawing.Point(307, 367);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(463, 50);
-            this.groupBox2.TabIndex = 0;
-            this.groupBox2.TabStop = false;
+            this.gbStatusBar.Controls.Add(this.txtInfo);
+            this.gbStatusBar.Location = new System.Drawing.Point(307, 507);
+            this.gbStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbStatusBar.Name = "gbStatusBar";
+            this.gbStatusBar.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbStatusBar.Size = new System.Drawing.Size(463, 57);
+            this.gbStatusBar.TabIndex = 0;
+            this.gbStatusBar.TabStop = false;
             // 
             // txtInfo
             // 
             this.txtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInfo.Location = new System.Drawing.Point(5, 11);
+            this.txtInfo.Location = new System.Drawing.Point(5, 12);
             this.txtInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
-            this.txtInfo.Size = new System.Drawing.Size(451, 36);
+            this.txtInfo.Size = new System.Drawing.Size(451, 40);
             this.txtInfo.TabIndex = 0;
             this.txtInfo.Text = "";
             // 
@@ -233,11 +233,11 @@
             this.groupBox3.Controls.Add(this.btnCommSettings);
             this.groupBox3.Controls.Add(this.btnDatabaseSettings);
             this.groupBox3.Controls.Add(this.btnGeneralSettings);
-            this.groupBox3.Location = new System.Drawing.Point(775, 367);
+            this.groupBox3.Location = new System.Drawing.Point(775, 507);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(150, 50);
+            this.groupBox3.Size = new System.Drawing.Size(150, 57);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
@@ -245,10 +245,10 @@
             // 
             this.btnCommSettings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCommSettings.BackgroundImage")));
             this.btnCommSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCommSettings.Location = new System.Drawing.Point(6, 10);
+            this.btnCommSettings.Location = new System.Drawing.Point(6, 11);
             this.btnCommSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCommSettings.Name = "btnCommSettings";
-            this.btnCommSettings.Size = new System.Drawing.Size(42, 36);
+            this.btnCommSettings.Size = new System.Drawing.Size(42, 41);
             this.btnCommSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnCommSettings, "Configuración de las comunicaciones");
             this.toolTip_EN.SetToolTip(this.btnCommSettings, "Communication settings");
@@ -259,10 +259,10 @@
             // 
             this.btnDatabaseSettings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDatabaseSettings.BackgroundImage")));
             this.btnDatabaseSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDatabaseSettings.Location = new System.Drawing.Point(53, 10);
+            this.btnDatabaseSettings.Location = new System.Drawing.Point(53, 11);
             this.btnDatabaseSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDatabaseSettings.Name = "btnDatabaseSettings";
-            this.btnDatabaseSettings.Size = new System.Drawing.Size(42, 36);
+            this.btnDatabaseSettings.Size = new System.Drawing.Size(42, 41);
             this.btnDatabaseSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnDatabaseSettings, "Configuración de la base de datos");
             this.toolTip_EN.SetToolTip(this.btnDatabaseSettings, "Database settings");
@@ -273,10 +273,10 @@
             // 
             this.btnGeneralSettings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGeneralSettings.BackgroundImage")));
             this.btnGeneralSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGeneralSettings.Location = new System.Drawing.Point(101, 10);
+            this.btnGeneralSettings.Location = new System.Drawing.Point(101, 11);
             this.btnGeneralSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGeneralSettings.Name = "btnGeneralSettings";
-            this.btnGeneralSettings.Size = new System.Drawing.Size(42, 36);
+            this.btnGeneralSettings.Size = new System.Drawing.Size(42, 41);
             this.btnGeneralSettings.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnGeneralSettings, "Configuración general");
             this.toolTip_EN.SetToolTip(this.btnGeneralSettings, "General settings");
@@ -291,11 +291,11 @@
             this.groupBox4.Controls.Add(this.cmbSystem);
             this.groupBox4.Controls.Add(this.lblUsage);
             this.groupBox4.Controls.Add(this.cmbTimeRange);
-            this.groupBox4.Location = new System.Drawing.Point(307, 9);
+            this.groupBox4.Location = new System.Drawing.Point(307, 10);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(618, 50);
+            this.groupBox4.Size = new System.Drawing.Size(618, 57);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
@@ -304,10 +304,10 @@
             this.btnSystemGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSystemGo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSystemGo.BackgroundImage")));
             this.btnSystemGo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSystemGo.Location = new System.Drawing.Point(502, 16);
+            this.btnSystemGo.Location = new System.Drawing.Point(502, 18);
             this.btnSystemGo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSystemGo.Name = "btnSystemGo";
-            this.btnSystemGo.Size = new System.Drawing.Size(28, 28);
+            this.btnSystemGo.Size = new System.Drawing.Size(28, 32);
             this.btnSystemGo.TabIndex = 3;
             this.toolTip_ES.SetToolTip(this.btnSystemGo, "Añadir valor");
             this.toolTip_EN.SetToolTip(this.btnSystemGo, "Add stock");
@@ -320,7 +320,7 @@
             this.cmbSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSystem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmbSystem.FormattingEnabled = true;
-            this.cmbSystem.Location = new System.Drawing.Point(326, 19);
+            this.cmbSystem.Location = new System.Drawing.Point(326, 22);
             this.cmbSystem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbSystem.Name = "cmbSystem";
             this.cmbSystem.Size = new System.Drawing.Size(170, 23);
@@ -330,9 +330,9 @@
             // 
             this.lblUsage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblUsage.Location = new System.Drawing.Point(560, 15);
+            this.lblUsage.Location = new System.Drawing.Point(560, 17);
             this.lblUsage.Name = "lblUsage";
-            this.lblUsage.Size = new System.Drawing.Size(50, 28);
+            this.lblUsage.Size = new System.Drawing.Size(50, 31);
             this.lblUsage.TabIndex = 1;
             this.lblUsage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -341,7 +341,7 @@
             this.cmbTimeRange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTimeRange.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmbTimeRange.FormattingEnabled = true;
-            this.cmbTimeRange.Location = new System.Drawing.Point(16, 20);
+            this.cmbTimeRange.Location = new System.Drawing.Point(16, 23);
             this.cmbTimeRange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbTimeRange.Name = "cmbTimeRange";
             this.cmbTimeRange.Size = new System.Drawing.Size(170, 23);
@@ -352,10 +352,10 @@
             // 
             this.btnShowStockValue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnShowStockValue.BackgroundImage")));
             this.btnShowStockValue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnShowStockValue.Location = new System.Drawing.Point(237, 10);
+            this.btnShowStockValue.Location = new System.Drawing.Point(237, 11);
             this.btnShowStockValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnShowStockValue.Name = "btnShowStockValue";
-            this.btnShowStockValue.Size = new System.Drawing.Size(25, 22);
+            this.btnShowStockValue.Size = new System.Drawing.Size(25, 25);
             this.btnShowStockValue.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnShowStockValue, "Informacion del valor");
             this.toolTip_EN.SetToolTip(this.btnShowStockValue, "Stock information");
@@ -366,10 +366,10 @@
             // 
             this.btnAddStockValue.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddStockValue.BackgroundImage")));
             this.btnAddStockValue.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddStockValue.Location = new System.Drawing.Point(209, 10);
+            this.btnAddStockValue.Location = new System.Drawing.Point(209, 11);
             this.btnAddStockValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddStockValue.Name = "btnAddStockValue";
-            this.btnAddStockValue.Size = new System.Drawing.Size(25, 22);
+            this.btnAddStockValue.Size = new System.Drawing.Size(25, 25);
             this.btnAddStockValue.TabIndex = 1;
             this.toolTip_ES.SetToolTip(this.btnAddStockValue, "Añadir valor");
             this.toolTip_EN.SetToolTip(this.btnAddStockValue, "Add stock");
@@ -392,17 +392,18 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 425);
+            this.ClientSize = new System.Drawing.Size(935, 566);
             this.Controls.Add(this.btnDeleteStockValue);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.btnAddStockValue);
             this.Controls.Add(this.btnShowStockValue);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbStatusBar);
             this.Controls.Add(this.gbStockValueList);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmMain";
@@ -417,7 +418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgStockValueData)).EndInit();
-            this.groupBox2.ResumeLayout(false);
+            this.gbStatusBar.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.chartContextMenu.ResumeLayout(false);
@@ -429,7 +430,7 @@
 
         private System.Windows.Forms.GroupBox gbStockValueList;
         private System.Windows.Forms.TreeView treeStockValue;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbStatusBar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cmbTimeRange;

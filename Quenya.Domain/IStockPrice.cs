@@ -19,5 +19,7 @@ namespace Quenya.Domain
         double Volume { get; set; }
 
         MOVEMENT Movement { get;  }
+
+        double Percentage { get; }
     }
 }

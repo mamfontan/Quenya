@@ -29,6 +29,16 @@ namespace Quenya.Domain
         [Column("Volume")]
         public double Volume { get; set; }
 
+        public double Percentage
+        {
+            get
+            {
+                var max = Math.Max(Open, Close);
+                var min = Math.Min(Open, Close);
+                return 100 - ((min * 100) / max);
+            }
+        }
+
         public MOVEMENT Movement 
         { 
             get

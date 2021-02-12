@@ -299,6 +299,7 @@ namespace Quenya.View
             // Modificamos las celdas
             for (int x = 2; x <= 5; x++)
                 dgStockValueData.Columns[x].DefaultCellStyle.Format = "N4";
+            dgStockValueData.Columns[8].DefaultCellStyle.Format = "N4";
 
             dgStockValueData.RowPrePaint += dgEvents_RowPrePaint;
         }
