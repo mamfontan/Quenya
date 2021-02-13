@@ -139,17 +139,20 @@ namespace Quenya.View
             if (treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
                 return;
 
-            Cursor = Cursors.WaitCursor;
+            if (MessageBox.Show("Delete selected item?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Cursor = Cursors.WaitCursor;
 
-            var selectedStockCode = treeStockValue.SelectedNode.Tag.ToString();
-            var result = _database.DeleteStockValue(selectedStockCode);
+                var selectedStockCode = treeStockValue.SelectedNode.Tag.ToString();
+                var result = _database.DeleteStockValue(selectedStockCode);
 
-            Cursor = Cursors.Default;
+                Cursor = Cursors.Default;
 
-            if (result.MsgType == MSG_TYPE.SUCCESS)
-                CreateStockValuesTree();
-            else
-                ShowMessageToUser(result);
+                if (result.MsgType == MSG_TYPE.SUCCESS)
+                    CreateStockValuesTree();
+                else
+                    ShowMessageToUser(result);
+            }
         }
 
         private void CreateBasicObjects()
@@ -359,8 +362,8 @@ namespace Quenya.View
 
                 splitContainer.Panel2.Controls.Add(chart);
                 chart.Dock = DockStyle.Fill;
-                //chart.Zoom = ZoomingOptions.Xy;
-                //chart.Pan = PanningOptions.Xy;
+                chart.Zoom = ZoomingOptions.Xy;
+                chart.Pan = PanningOptions.Xy;
             }
         }
 
@@ -376,17 +379,11 @@ namespace Quenya.View
                        .Y(dayModel => dayModel.Value);
 
                 CartesianChart chart = new CartesianChart();
-
-                ChartValues<ChartModel> max2 = new ChartValues<ChartModel>();
-                ChartValues<ChartModel> min2 = new ChartValues<ChartModel>();
                 ChartValues<ChartModel> average = new ChartValues<ChartModel>();
-
                 ChartValues<ChartModel> vol = new ChartValues<ChartModel>();
 
                 foreach (var item in data)
                 {
-                    //max2.Add(new ChartModel(item.Date, item.Max));
-                    //min2.Add(new ChartModel(item.Date, item.Min));
                     average.Add(new ChartModel(item.Date, (item.Max - item.Min) / 2));
                     vol.Add(new ChartModel(item.Date, item.Volume));
                 }
@@ -399,26 +396,11 @@ namespace Quenya.View
 
                 chart.Series = new SeriesCollection(dayConfig)
                 {
-                    //new LineSeries
-                    //{
-                    //    Title = "Max",
-                    //    Values = max2,
-                    //},
-                    //new LineSeries
-                    //{
-                    //    Title = "Min",
-                    //    Values = min2,
-                    //},
                     new LineSeries
                     {
                         Title = "Value",
                         Values = average,
                     },
-                    //new ColumnSeries
-                    //{
-                    //    Title = "Volume",
-                    //    Values = vol,
-                    //}
                 };
 
                 chart.AxisX.Add(new Axis
@@ -435,6 +417,8 @@ namespace Quenya.View
 
                 splitContainer.Panel2.Controls.Add(chart);
                 chart.Dock = DockStyle.Fill;
+                chart.Zoom = ZoomingOptions.Xy;
+                chart.Pan = PanningOptions.Xy;
 
                 chart.ContextMenuStrip = chartContextMenu;
             }
