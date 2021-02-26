@@ -8,16 +8,16 @@ namespace Quenya.Domain
     {
         private const string SEPARATOR = " - ";
 
-        [Key, Column("Code"), MaxLength(8)]
+        [Key, Column("Code"), MaxLength(10)]
         public string Code { get; set; }
 
-        [Column("Name"), MaxLength(30)]
+        [Column("Name"), MaxLength(75)]
         public string Name { get; set; }
 
-        [Column("Country")]
+        [Column("Country"), MaxLength(30)]
         public string Country { get; set; }
 
-        [Column("Currency")]
+        [Column("Currency"), MaxLength(30)]
         public string Currency { get; set; }
 
         public string FullName => Code + SEPARATOR + Name;

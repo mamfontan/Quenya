@@ -417,7 +417,7 @@ namespace Quenya.Common
                     var savedPrices05 = _stockContext.FiveMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
                     var savedPrices15 = _stockContext.FifteenMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
                     var savedPrices60 = _stockContext.SixtyMinuteValues.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
-                    var savedDailys = _stockContext.Dailys.ToList();
+                    var savedDailys = _stockContext.Dailys.Where(x => x.Code.Equals(stockCode, StringComparison.InvariantCultureIgnoreCase));
 
                     if (savedStock != null)
                         _stockContext.Stocks.Remove(savedStock);

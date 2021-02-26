@@ -19,6 +19,8 @@ namespace Quenya.View
     {
         private const string REQUEST_LIMIT = " / 5";
 
+        private const string OP_NOT_REVERSIBLE = "This operation is not reversible";
+
         private List<KeyValuePair<int, string>> _timeRangeList;
 
         private List<KeyValuePair<int, string>> _systemsList;
@@ -139,7 +141,10 @@ namespace Quenya.View
             if (treeStockValue.SelectedNode == null || treeStockValue.SelectedNode.Tag == null)
                 return;
 
-            if (MessageBox.Show("Delete selected item?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            var strName = treeStockValue.SelectedNode.Text;
+
+            if (MessageBox.Show("Delete " + strName + "?" + Environment.NewLine +
+                OP_NOT_REVERSIBLE, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Cursor = Cursors.WaitCursor;
 
@@ -373,7 +378,6 @@ namespace Quenya.View
 
             if (data != null && data.Any())
             {
-
                 var dayConfig = Mappers.Xy<ChartModel>()
                        .X(dayModel => (double)dayModel.DateTime.Ticks / TimeSpan.FromSeconds(1).Ticks)
                        .Y(dayModel => dayModel.Value);
