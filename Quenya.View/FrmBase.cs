@@ -86,5 +86,21 @@ namespace Quenya.View
             if (Cursor != Cursors.WaitCursor)
                 Cursor = Cursors.Default;
         }
+
+        private void Translate()
+        {
+            if (_config == null)
+                return;
+
+            switch(_config.Language)
+            {
+                case LANGUAGE.SPANISH:
+                    break;
+                case LANGUAGE.ENGLISH:
+                    break;
+                case LANGUAGE.FRENCH:
+                    break;
+            }
+        }
     }
 }

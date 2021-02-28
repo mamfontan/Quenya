@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Management;
 using System.Windows.Forms;
 using TinyMessenger;
 using CartesianChart = LiveCharts.WinForms.CartesianChart;
@@ -54,9 +55,16 @@ namespace Quenya.View
             CreateBasicObjects();
 
             CreateStockValuesTree();
-            CreateNoDataChart();
 
             SubscribeToEvents();
+            PrepareForm();
+        }
+
+        private void PrepareForm()
+        {
+            CreateNoDataChart();
+            TranslateToolTips();
+            GetMemoryUsage();
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -295,6 +303,8 @@ namespace Quenya.View
             }
 
             ConfigureGridColumns();
+
+            GetMemoryUsage();
         }
 
         private void ConfigureGridColumns()
@@ -649,6 +659,48 @@ namespace Quenya.View
             }
         }
 
+        #endregion
+
+        private void TranslateToolTips()
+        {
+            if (_config != null)
+            {
+                switch (_config.Language)
+                {
+                    case LANGUAGE.SPANISH:
+                        toolTip_EN.Active = false;
+                        toolTip_ES.Active = true;
+                        break;
+                    case LANGUAGE.ENGLISH:
+                        toolTip_EN.Active = true;
+                        toolTip_ES.Active = false;
+                        break;
+                    case LANGUAGE.FRENCH:
+                        toolTip_EN.Active = false;
+                        toolTip_ES.Active = false;
+                        break;
+                }
+            }    
+        }
+
+        #region Memory usage
+        private void GetMemoryUsage()
+        {
+            var wmiObject = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+
+            var memoryValues = wmiObject.Get().Cast<ManagementObject>().Select(mo => new {
+                FreePhysicalMemory = Double.Parse(mo["FreePhysicalMemory"].ToString()),
+                TotalVisibleMemorySize = Double.Parse(mo["TotalVisibleMemorySize"].ToString())
+            }).FirstOrDefault();
+
+            if (memoryValues != null)
+            {
+                var percent = ((memoryValues.TotalVisibleMemorySize - memoryValues.FreePhysicalMemory) / memoryValues.TotalVisibleMemorySize) * 100;
+                BeginInvoke((Action)(() => {
+                    lblMemoryCounter.Text = percent.ToString("0.00") + " %";
+                }));
+            }
+        }
         #endregion
     }
 }

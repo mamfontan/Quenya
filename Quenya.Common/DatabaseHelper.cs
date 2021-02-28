@@ -24,6 +24,11 @@ namespace Quenya.Common
             _stockContext = new StockContext(_cnnDatabase);
         }
 
+        ~DatabaseHelper()
+        {
+            _stockContext.Dispose();
+        }
+
         public StatusMessage TestConnection()
         {
             var result = new StatusMessage();

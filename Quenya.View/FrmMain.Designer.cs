@@ -59,6 +59,8 @@
             this.toolTip_EN = new System.Windows.Forms.ToolTip(this.components);
             this.chartContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuShowHideVolume = new System.Windows.Forms.ToolStripMenuItem();
+            this.gbMemory = new System.Windows.Forms.GroupBox();
+            this.lblMemoryCounter = new System.Windows.Forms.Label();
             this.gbStockValueList.SuspendLayout();
             this.treeContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
@@ -69,6 +71,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.chartContextMenu.SuspendLayout();
+            this.gbMemory.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbStockValueList
@@ -82,7 +85,7 @@
             this.gbStockValueList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbStockValueList.Name = "gbStockValueList";
             this.gbStockValueList.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbStockValueList.Size = new System.Drawing.Size(333, 744);
+            this.gbStockValueList.Size = new System.Drawing.Size(333, 677);
             this.gbStockValueList.TabIndex = 0;
             this.gbStockValueList.TabStop = false;
             this.gbStockValueList.Text = " Stock value list  ";
@@ -99,7 +102,7 @@
             this.treeStockValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeStockValue.Name = "treeStockValue";
             this.treeStockValue.ShowNodeToolTips = true;
-            this.treeStockValue.Size = new System.Drawing.Size(299, 703);
+            this.treeStockValue.Size = new System.Drawing.Size(299, 636);
             this.treeStockValue.TabIndex = 0;
             this.treeStockValue.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeStockValue_AfterSelect);
             // 
@@ -300,26 +303,24 @@
             // 
             // btnSystemGo
             // 
-            this.btnSystemGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSystemGo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSystemGo.BackgroundImage")));
-            this.btnSystemGo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSystemGo.Location = new System.Drawing.Point(714, 16);
+            this.btnSystemGo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSystemGo.Location = new System.Drawing.Point(432, 27);
             this.btnSystemGo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSystemGo.Name = "btnSystemGo";
-            this.btnSystemGo.Size = new System.Drawing.Size(49, 46);
+            this.btnSystemGo.Size = new System.Drawing.Size(35, 27);
             this.btnSystemGo.TabIndex = 3;
-            this.toolTip_ES.SetToolTip(this.btnSystemGo, "Añadir valor");
-            this.toolTip_EN.SetToolTip(this.btnSystemGo, "Add stock");
+            this.toolTip_ES.SetToolTip(this.btnSystemGo, "Ejecutar método");
+            this.toolTip_EN.SetToolTip(this.btnSystemGo, "Execute method");
             this.btnSystemGo.UseVisualStyleBackColor = true;
             this.btnSystemGo.Click += new System.EventHandler(this.btnSystemGo_Click);
             // 
             // cmbSystem
             // 
-            this.cmbSystem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSystem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cmbSystem.FormattingEnabled = true;
-            this.cmbSystem.Location = new System.Drawing.Point(513, 27);
+            this.cmbSystem.Location = new System.Drawing.Point(232, 28);
             this.cmbSystem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbSystem.Name = "cmbSystem";
             this.cmbSystem.Size = new System.Drawing.Size(194, 25);
@@ -329,9 +330,9 @@
             // 
             this.lblUsage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblUsage.Location = new System.Drawing.Point(775, 16);
+            this.lblUsage.Location = new System.Drawing.Point(776, 21);
             this.lblUsage.Name = "lblUsage";
-            this.lblUsage.Size = new System.Drawing.Size(62, 46);
+            this.lblUsage.Size = new System.Drawing.Size(61, 36);
             this.lblUsage.TabIndex = 1;
             this.lblUsage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -389,11 +390,32 @@
             this.menuShowHideVolume.Size = new System.Drawing.Size(214, 22);
             this.menuShowHideVolume.Text = "Show / Hide volume series";
             // 
+            // gbMemory
+            // 
+            this.gbMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbMemory.Controls.Add(this.lblMemoryCounter);
+            this.gbMemory.Location = new System.Drawing.Point(12, 695);
+            this.gbMemory.Name = "gbMemory";
+            this.gbMemory.Size = new System.Drawing.Size(333, 65);
+            this.gbMemory.TabIndex = 3;
+            this.gbMemory.TabStop = false;
+            this.gbMemory.Text = "Used memory  ";
+            // 
+            // lblMemoryCounter
+            // 
+            this.lblMemoryCounter.Location = new System.Drawing.Point(36, 30);
+            this.lblMemoryCounter.Name = "lblMemoryCounter";
+            this.lblMemoryCounter.Size = new System.Drawing.Size(252, 22);
+            this.lblMemoryCounter.TabIndex = 0;
+            this.lblMemoryCounter.Text = "label1";
+            this.lblMemoryCounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1209, 839);
+            this.Controls.Add(this.gbMemory);
             this.Controls.Add(this.gbStatusBar);
             this.Controls.Add(this.btnDeleteStockValue);
             this.Controls.Add(this.splitContainer);
@@ -421,6 +443,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.chartContextMenu.ResumeLayout(false);
+            this.gbMemory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -459,6 +482,8 @@
         private System.Windows.Forms.ComboBox cmbSystem;
         private System.Windows.Forms.ContextMenuStrip chartContextMenu;
         private System.Windows.Forms.ToolStripMenuItem menuShowHideVolume;
+        private System.Windows.Forms.GroupBox gbMemory;
+        private System.Windows.Forms.Label lblMemoryCounter;
     }
 }
 
