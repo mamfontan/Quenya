@@ -1,0 +1,5 @@
+>>> 23:51:48 26/02/2021
+   The provider did not return a ProviderManifestToken string.
+   Unable to connect to any of the specified MySQL hosts.
+   One or more errors occurred. (No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión. 127.0.0.1:3306)
+   No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión. 127.0.0.1:3306
