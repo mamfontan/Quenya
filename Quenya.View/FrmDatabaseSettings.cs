@@ -38,10 +38,12 @@ namespace Quenya.View
             {
                 new KeyValuePair<int, string>(0, "Check connection"),
                 new KeyValuePair<int, string>(1, "Check database"),
+                new KeyValuePair<int, string>(2, "Backup database"),
+                new KeyValuePair<int, string>(3, "Restore database"),
                 new KeyValuePair<int, string>(100, "Destroy the computer"),
             };
 
-            SetComboBox(cmbActionList, _actionList, "Key", "Value");
+            SetComboBox(cmbActionList, _actionList, "Key", "Value", 0);
         }
 
         private void ShowDatabaseSettingsData()
@@ -74,10 +76,18 @@ namespace Quenya.View
                     result = _database.CheckCompatibility(txtDbHost.Text.Trim(), npDbPort.Value.ToString(), txtDbName.Text.Trim(), txtDbUser.Text.Trim(), txtDbPassword.Text.Trim());
                     ShowMessageToUser(result);
                     break;
-                case 100:
+                case 2: // Backup database
+                    MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case 3: // Restore database
+                    MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case 100: // Destroy de the computer
                     MessageBox.Show("Not implemented", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
+
+            Cursor = Cursors.Default;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

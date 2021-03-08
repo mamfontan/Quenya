@@ -26,6 +26,14 @@ namespace Quenya.View
 
         private List<KeyValuePair<int, string>> _systemsList;
 
+        private LineSeries _openSerie;
+
+        private LineSeries _closeSerie;
+
+        private LineSeries _averageSerie;
+
+        private LineSeries _volumeSerie;
+
         #region Tokens de subrcripcion a eventos
         private TinyMessageSubscriptionToken _tokenMsgUpdateApiUse;
         #endregion
@@ -90,6 +98,8 @@ namespace Quenya.View
             menuUpdate60M.Click += menuUpdate60M_Click;
 
             menuShowHideVolume.Click += menuShowHideVolume_Click;
+            menuShowHideOpenValue.Click += menuShowHideOpenValue_Click;
+            menuShowHideCloseValue.Click += menuShowHideCloseValue_Click;
         }
 
         private void SubscribeToEvents()
@@ -170,16 +180,30 @@ namespace Quenya.View
 
         private void CreateBasicObjects()
         {
+            #region
+            _openSerie = new LineSeries();
+            _openSerie.Title = "Open";
+
+            _closeSerie = new LineSeries();
+            _closeSerie.Title = "Close";
+
+            _averageSerie = new LineSeries();
+            _averageSerie.Title = "Average";
+
+            _volumeSerie = new LineSeries();
+            _volumeSerie.Title = "Volume";
+            #endregion
+
             _timeRangeList = new List<KeyValuePair<int, string>>()
             {
-                new KeyValuePair<int, string>(0, "Daily values"),
                 new KeyValuePair<int, string>(1, "1 minute"),
                 new KeyValuePair<int, string>(2, "5 minutes"),
                 new KeyValuePair<int, string>(3, "15 minutes"),
                 new KeyValuePair<int, string>(4, "60 minutes"),
+                new KeyValuePair<int, string>(0, "Daily values"),
             };
 
-            SetComboBox(cmbTimeRange, _timeRangeList, "Key", "Value");
+            SetComboBox(cmbTimeRange, _timeRangeList, "Key", "Value", 0);
 
             _systemsList = new List<KeyValuePair<int, string>>()
             {
@@ -189,7 +213,7 @@ namespace Quenya.View
                 new KeyValuePair<int, string>(2, "System 004"),
             };
 
-            SetComboBox(cmbSystem, _systemsList, "Key", "Value");
+            SetComboBox(cmbSystem, _systemsList, "Key", "Value", 0);
         }
 
         private void CreateStockValuesTree()
@@ -394,27 +418,28 @@ namespace Quenya.View
 
                 CartesianChart chart = new CartesianChart();
                 ChartValues<ChartModel> average = new ChartValues<ChartModel>();
-                ChartValues<ChartModel> vol = new ChartValues<ChartModel>();
+                ChartValues<ChartModel> volume = new ChartValues<ChartModel>();
+
+                ChartValues<ChartModel> open = new ChartValues<ChartModel>();
+                ChartValues<ChartModel> close = new ChartValues<ChartModel>();
 
                 foreach (var item in data)
                 {
-                    average.Add(new ChartModel(item.Date, (item.Max - item.Min) / 2));
-                    vol.Add(new ChartModel(item.Date, item.Volume));
+                    average.Add(new ChartModel(item.Date, item.Min + (item.Max - item.Min) / 2));
+                    open.Add(new ChartModel(item.Date, item.Open));
+                    close.Add(new ChartModel(item.Date, item.Close));
+                    volume.Add(new ChartModel(item.Date, item.Volume));
                 }
 
-                // TODO Volme series
-                if (_config.ShowVolumeSeries)
-                {
-
-                }
+                _openSerie.Values = open;
+                _closeSerie.Values = close;
+                _averageSerie.Values = average;
+                //_volumeSerie.Values = volume;
 
                 chart.Series = new SeriesCollection(dayConfig)
                 {
-                    new LineSeries
-                    {
-                        Title = "Value",
-                        Values = average,
-                    },
+                    _openSerie, _closeSerie, _averageSerie,
+                    //_volumeSerie,
                 };
 
                 chart.AxisX.Add(new Axis
@@ -626,11 +651,27 @@ namespace Quenya.View
 
         private void menuShowHideVolume_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            ShowMessageToUser(new StatusMessage(MSG_TYPE.INFORMATION, "NO IMPLEMENTADO TODAVIA"));
-            Cursor = Cursors.Default;
+            ShowHideSerie(_averageSerie);
+        }
+
+        private void menuShowHideOpenValue_Click(object sender, EventArgs e)
+        {
+            ShowHideSerie(_openSerie);
+        }
+        
+        private void menuShowHideCloseValue_Click(object sender, EventArgs e)
+        {
+            ShowHideSerie(_closeSerie);
         }
         #endregion
+
+        private void ShowHideSerie(LineSeries serie)
+        {
+            if (serie.Visibility == System.Windows.Visibility.Visible)
+                serie.Visibility = System.Windows.Visibility.Hidden;
+            else
+                serie.Visibility = System.Windows.Visibility.Visible;
+        }
 
         #region Systems
         private void btnSystemGo_Click(object sender, EventArgs e)

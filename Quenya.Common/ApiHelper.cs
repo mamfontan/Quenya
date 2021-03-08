@@ -4,6 +4,7 @@ using Quenya.Common.messages;
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -662,7 +663,6 @@ namespace Quenya.Common
             return result;
         }
 
-
         private class StockSearchResult
         {
             public string Symbol { get; set; }
@@ -699,6 +699,11 @@ namespace Quenya.Common
             public string Sector { get; set; }
 
             public string Address { get; set; }
+        }
+
+        public Bitmap SearchLogo(string stockCode)
+        {
+            return null;
         }
     }
 }

@@ -53,10 +53,10 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Location = new System.Drawing.Point(10, 218);
+            this.btnCancel.Location = new System.Drawing.Point(10, 247);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(82, 22);
+            this.btnCancel.Size = new System.Drawing.Size(82, 25);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -65,10 +65,10 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(385, 218);
+            this.btnSave.Location = new System.Drawing.Point(382, 247);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(82, 22);
+            this.btnSave.Size = new System.Drawing.Size(82, 25);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -86,87 +86,87 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.npDbPort);
             this.groupBox1.Controls.Add(this.txtDbHost);
-            this.groupBox1.Location = new System.Drawing.Point(10, 9);
+            this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(458, 136);
+            this.groupBox1.Size = new System.Drawing.Size(458, 154);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Connection data  ";
             // 
             // txtDbPassword
             // 
-            this.txtDbPassword.Location = new System.Drawing.Point(315, 99);
+            this.txtDbPassword.Location = new System.Drawing.Point(315, 112);
             this.txtDbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDbPassword.Name = "txtDbPassword";
-            this.txtDbPassword.Size = new System.Drawing.Size(113, 23);
+            this.txtDbPassword.Size = new System.Drawing.Size(113, 25);
             this.txtDbPassword.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(315, 82);
+            this.label5.Location = new System.Drawing.Point(315, 93);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 15);
+            this.label5.Size = new System.Drawing.Size(70, 19);
             this.label5.TabIndex = 2;
             this.label5.Text = "Password:";
             // 
             // txtDbUser
             // 
-            this.txtDbUser.Location = new System.Drawing.Point(186, 99);
+            this.txtDbUser.Location = new System.Drawing.Point(186, 112);
             this.txtDbUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDbUser.Name = "txtDbUser";
-            this.txtDbUser.Size = new System.Drawing.Size(113, 23);
+            this.txtDbUser.Size = new System.Drawing.Size(113, 25);
             this.txtDbUser.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(186, 82);
+            this.label4.Location = new System.Drawing.Point(186, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 15);
+            this.label4.Size = new System.Drawing.Size(40, 19);
             this.label4.TabIndex = 2;
             this.label4.Text = "User:";
             // 
             // txtDbName
             // 
-            this.txtDbName.Location = new System.Drawing.Point(21, 99);
+            this.txtDbName.Location = new System.Drawing.Point(21, 112);
             this.txtDbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDbName.Name = "txtDbName";
-            this.txtDbName.Size = new System.Drawing.Size(148, 23);
+            this.txtDbName.Size = new System.Drawing.Size(148, 25);
             this.txtDbName.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 82);
+            this.label3.Location = new System.Drawing.Point(21, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 15);
+            this.label3.Size = new System.Drawing.Size(107, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Database name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(327, 30);
+            this.label2.Location = new System.Drawing.Point(327, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 15);
+            this.label2.Size = new System.Drawing.Size(37, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Port:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 30);
+            this.label1.Location = new System.Drawing.Point(21, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 15);
+            this.label1.Size = new System.Drawing.Size(41, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Host:";
             // 
             // npDbPort
             // 
-            this.npDbPort.Location = new System.Drawing.Point(327, 47);
+            this.npDbPort.Location = new System.Drawing.Point(327, 53);
             this.npDbPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.npDbPort.Maximum = new decimal(new int[] {
             65535,
@@ -174,27 +174,27 @@
             0,
             0});
             this.npDbPort.Name = "npDbPort";
-            this.npDbPort.Size = new System.Drawing.Size(96, 23);
+            this.npDbPort.Size = new System.Drawing.Size(96, 25);
             this.npDbPort.TabIndex = 1;
             this.npDbPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDbHost
             // 
-            this.txtDbHost.Location = new System.Drawing.Point(21, 47);
+            this.txtDbHost.Location = new System.Drawing.Point(21, 53);
             this.txtDbHost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDbHost.Name = "txtDbHost";
-            this.txtDbHost.Size = new System.Drawing.Size(279, 23);
+            this.txtDbHost.Size = new System.Drawing.Size(279, 25);
             this.txtDbHost.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnActionGo);
             this.groupBox2.Controls.Add(this.cmbActionList);
-            this.groupBox2.Location = new System.Drawing.Point(10, 150);
+            this.groupBox2.Location = new System.Drawing.Point(10, 170);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(458, 62);
+            this.groupBox2.Size = new System.Drawing.Size(458, 70);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = " Actions  ";
@@ -202,10 +202,10 @@
             // btnActionGo
             // 
             this.btnActionGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnActionGo.Location = new System.Drawing.Point(374, 26);
+            this.btnActionGo.Location = new System.Drawing.Point(374, 29);
             this.btnActionGo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnActionGo.Name = "btnActionGo";
-            this.btnActionGo.Size = new System.Drawing.Size(40, 22);
+            this.btnActionGo.Size = new System.Drawing.Size(40, 25);
             this.btnActionGo.TabIndex = 0;
             this.btnActionGo.Text = "Go";
             this.btnActionGo.UseVisualStyleBackColor = true;
@@ -215,21 +215,22 @@
             // 
             this.cmbActionList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbActionList.FormattingEnabled = true;
-            this.cmbActionList.Location = new System.Drawing.Point(38, 27);
+            this.cmbActionList.Location = new System.Drawing.Point(38, 31);
             this.cmbActionList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbActionList.Name = "cmbActionList";
-            this.cmbActionList.Size = new System.Drawing.Size(327, 23);
+            this.cmbActionList.Size = new System.Drawing.Size(327, 25);
             this.cmbActionList.TabIndex = 0;
             // 
             // FrmDatabaseSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 249);
+            this.ClientSize = new System.Drawing.Size(476, 283);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

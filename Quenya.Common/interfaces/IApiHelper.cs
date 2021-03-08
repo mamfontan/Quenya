@@ -1,5 +1,6 @@
 ﻿using Quenya.Domain;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Quenya.Common.interfaces
 {
@@ -18,5 +19,7 @@ namespace Quenya.Common.interfaces
         List<StockPrice15M> SearchStockPrice15M(string stockCode);
 
         List<StockPrice60M> SearchStockPrice60M(string stockCode);
+
+        Bitmap SearchLogo(string stockCode);
     }
 }

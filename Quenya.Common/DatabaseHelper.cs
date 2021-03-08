@@ -3,6 +3,7 @@ using Quenya.Common.interfaces;
 using Quenya.Domain;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace Quenya.Common
@@ -515,6 +516,11 @@ namespace Quenya.Common
                 return new StatusMessage(MSG_TYPE.ERROR, error.Message);
             else
                 return new StatusMessage(MSG_TYPE.ERROR, error.InnerException.Message);
+        }
+
+        public Logo GetLogo(string stockCode)
+        {
+            return _stockContext.Logos.FirstOrDefault(x => x.Code == stockCode);
         }
     }
 }

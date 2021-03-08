@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Quenya.Common;
 using Quenya.Domain;
 using Quenya.Common.interfaces;
+using System.Drawing;
+using System.ComponentModel;
 
 namespace Quenya.View
 {
@@ -34,9 +36,10 @@ namespace Quenya.View
 
         private void FrmStockDetail_Load(object sender, EventArgs e)
         {
-            HookButtonEvents(new List<Control>() { btnExport, btnClose });
+            HookButtonEvents(new List<Control>() { btnExport, btnClose, btnRefreshLogo });
 
             LoadOverviewData();
+            LoadLogoData();
         }
 
         private void LoadOverviewData()
@@ -49,18 +52,30 @@ namespace Quenya.View
                 ShowData(overview);
             else
             {
+                ClearData();
                 if (_api != null)
                 {
                     overview = _api.SearchStockOverview(_stockCode);
-                    if (overview != null) {
+                    if (overview != null)
+                    {
                         ShowData(overview);
                         _database.InsertStockOverview(overview);
                     }
-                    else
-                        ClearData();
                 }
-                else
-                    ClearData();
+            }
+        }
+
+        private void LoadLogoData()
+        {
+            if (string.IsNullOrEmpty(_stockCode) || _database == null)
+                return;
+
+            var logo = _database.GetLogo(_stockCode);
+            if (logo != null)
+                ShowLogo(logo);
+            else
+            {
+
             }
         }
 
@@ -78,6 +93,15 @@ namespace Quenya.View
                 lblIndustryValue.Text = data.Industry;
                 lblEmployeesValue.Text = data.FullTimeEmployees;
                 lblAddressValue.Text = data.Address;
+            }
+        }
+
+        private void ShowLogo(Logo logo)
+        {
+            if (logo != null)
+            {
+                TypeConverter tc = TypeDescriptor.GetConverter(typeof(Bitmap));
+                pbLogo.Image = (Bitmap)tc.ConvertFrom(logo.Thumb);
             }
         }
 
@@ -112,6 +136,14 @@ namespace Quenya.View
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnRefreshLogo_Click(object sender, EventArgs e)
+        {
+            if (_api == null)
+                return;
+
+            _api.SearchLogo(_stockCode);
         }
     }
 }

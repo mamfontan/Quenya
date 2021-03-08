@@ -55,5 +55,7 @@ namespace Quenya.Common.interfaces
         DateTime? GetLastUpdateFor15MinValues(string stockCode);
 
         DateTime? GetLastUpdateFor60MinValues(string stockCode);
+
+        Logo GetLogo(string stockCode);
     }
 }

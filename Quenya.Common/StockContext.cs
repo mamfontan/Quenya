@@ -16,6 +16,8 @@ namespace Quenya.Common
 
         public DbSet<Overview> Overviews { get; set; }
 
+        public DbSet<Logo> Logos { get; set; }
+
         public DbSet<StockPriceDaily> Dailys { get; set; }
 
         public DbSet<StockPrice01M> OneMinuteValues { get; set; }

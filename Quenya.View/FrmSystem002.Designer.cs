@@ -67,6 +67,7 @@ namespace Quenya.View
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSystem002";
             this.Text = "System 002";
+            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSystem002_FormClosed);
             this.Load += new System.EventHandler(this.FrmSystem002_Load);
             this.ResumeLayout(false);

@@ -58,6 +58,8 @@
             this.toolTip_ES = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip_EN = new System.Windows.Forms.ToolTip(this.components);
             this.chartContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuShowHideOpenValue = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuShowHideCloseValue = new System.Windows.Forms.ToolStripMenuItem();
             this.menuShowHideVolume = new System.Windows.Forms.ToolStripMenuItem();
             this.gbMemory = new System.Windows.Forms.GroupBox();
             this.lblMemoryCounter = new System.Windows.Forms.Label();
@@ -380,9 +382,23 @@
             // 
             this.chartContextMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.chartContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuShowHideOpenValue,
+            this.menuShowHideCloseValue,
             this.menuShowHideVolume});
             this.chartContextMenu.Name = "chartContextMenu";
-            this.chartContextMenu.Size = new System.Drawing.Size(215, 26);
+            this.chartContextMenu.Size = new System.Drawing.Size(215, 70);
+            // 
+            // menuShowHideOpenValue
+            // 
+            this.menuShowHideOpenValue.Name = "menuShowHideOpenValue";
+            this.menuShowHideOpenValue.Size = new System.Drawing.Size(214, 22);
+            this.menuShowHideOpenValue.Text = "Show / Hide Open value";
+            // 
+            // menuShowHideCloseValue
+            // 
+            this.menuShowHideCloseValue.Name = "menuShowHideCloseValue";
+            this.menuShowHideCloseValue.Size = new System.Drawing.Size(214, 22);
+            this.menuShowHideCloseValue.Text = "Show / Hide Close value";
             // 
             // menuShowHideVolume
             // 
@@ -484,6 +500,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuShowHideVolume;
         private System.Windows.Forms.GroupBox gbMemory;
         private System.Windows.Forms.Label lblMemoryCounter;
+        private System.Windows.Forms.ToolStripMenuItem menuShowHideOpenValue;
+        private System.Windows.Forms.ToolStripMenuItem menuShowHideCloseValue;
     }
 }
 

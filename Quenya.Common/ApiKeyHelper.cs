@@ -12,6 +12,8 @@ namespace Quenya.Common
 
         private const string KEY_DEMO = "demo";
 
+        private const string LOGO_API_KEY = "eLyOI9uHIa3MyXp8U3pxT6uWEaXYCFhm5RjlIfaC";
+
         private DateTime _startDay;
 
         private List<TimedKey> _keys = new List<TimedKey>();

@@ -39,7 +39,7 @@ namespace Quenya.View
                 new KeyValuePair<int, string>(2, "French"),
             };
 
-            SetComboBox(cmbLanguageList, _languageList, "Key", "Value");
+            SetComboBox(cmbLanguageList, _languageList, "Key", "Value", null);
         }
 
         private void ShowGeneralSettingsData()

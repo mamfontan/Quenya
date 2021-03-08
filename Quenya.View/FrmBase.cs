@@ -36,11 +36,13 @@ namespace Quenya.View
             }
         }
 
-        public void SetComboBox(ComboBox cmb, List<KeyValuePair<int, string>> data, string strKey, string strValue)
+        public void SetComboBox(ComboBox cmb, List<KeyValuePair<int, string>> data, string strKey, string strValue, int? selectedValue)
         {
             cmb.DataSource = data;
             cmb.DisplayMember = strValue;
             cmb.ValueMember = strKey;
+            if (selectedValue != null)
+                cmb.SelectedValue = selectedValue;
         }
 
         public void ShowMessageToUser(StatusMessage msg)
